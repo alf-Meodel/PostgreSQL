@@ -2,6 +2,12 @@
 
 ![postegrean](assets/img/postgre_ban.webp)
 
+<h1 style="color: #008080;">GET STARTED ( Linux)</h1>
+
+- [Setup](doc/setup_linux.md)
+- [Get Started ](doc/get_started.md)
+- [Commandes CLI](doc/commandes_cli.md)
+
 <h3 style="color: #ab638c"> Différences majeures entre PostegreSQL et MYSQL </h2>
 
 | Critères                 | MySQL                                      | PostegreSQL                                              |
@@ -38,8 +44,3 @@
 - **Systèmes de gestion de données** : Excellente gestion de données variées comme des cartes géographiques ou des documents structurés (JSON).
 
 - **Applications critiques** : Idéal pour des services **où la disponibilité et la sécurité sont essentielles**, comme les **services de santé et de sécurité.**
-
-<h1 style="color: #008080;">GET STARTED</h1>
-
-- [Linux](doc/setup_linux.md)
-- [Windows](doc/setup_windows.md)
