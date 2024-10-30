@@ -1,5 +1,7 @@
 <h1 style="color: #008080;">PostgreSQL</h1>
 
+![postegrean](assets/img/postgre_ban.webp)
+
 <h3 style="color: #ab638c"> Différences majeures entre PostegreSQL et MYSQL </h2>
 
 | Critères                 | MySQL                                      | PostegreSQL                                              |
