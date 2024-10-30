@@ -32,11 +32,34 @@ postgresql.service - PostgreSQL RDBMS
 
 - Pour nous connecter nous allons utiliser la commande suivante :
 
-` sudo -i -u postgres`
+# ` sudo -i -u postgres`
 
 - Ce qui nosu permettra d'accéder au **Terminal PostegreSQL** avec :
 
-## `psql`
+# `psql`
+
+## Créer un mot de passe pour le superUtilisateur postgreS
+
+- Une fois dans le terminal PostgreSQL **indiqué par postgres=#** , nous allons définir un mot de passe pour **postgres** qui est le **Superutilisateur** par défaut de PostgreSQL avec la commande suivante :
+
+`ALTER USER postgres PASSWORD 'votre_mot_de_passe';`
+
+- **ALTER ROLE** confirme que le mot de passe à été modifié avec succès !!
+
+## Créer un nouvel utilisateur
+
+- Nous pouvons créer un nouvel utilisateur avec
+
+`CREATE USER nom_utilisateur WITH PASSWORD 'mot_de_passe';`
+
+- Et lui accorder des privilèges \*_"SuperUtilisateur"_`
+
+`ALTER USER nom_utilisateur WITH SUPERUSER;`
+
+## Quitter psql
+
+- la commande recommandé est **/q** mais elle ne marche pas dans mon cas
+- j'utilise donc **ctrl D**
 
 <h1 style="color: #ab638c"> Installation de pgAdmin 4 </h1>
 
@@ -58,3 +81,15 @@ _pgAdmin 4 est une interface graphique complète pour administrer et gérer les 
 - **PS : une version web existe**
 
 <h1 style="color: #ab638c"> Installation de pgCli </h1>
+
+- Dans un premier temps nous allons mettre à jour nos paquets
+
+`sudo apt update`
+
+- Puis nous allons installer **pgCli** avec la commande suivante
+
+`sudo apt install pgcli`
+
+- à présent nous pouvons nous connecter avec nos identifiants/ mots de passe en suivant la section **Se connecter à PostgreSQL**
+
+`pgcli -U votre_utilisateur -d votre_base`
