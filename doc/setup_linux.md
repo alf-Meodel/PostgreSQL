@@ -1,5 +1,7 @@
 <h1 style="color: #008080;">LINUX POSTEGRESQL </h1>
 
+---
+
 <h1 style="color: #ab638c"> GET STARTED </h1>
 
 ## Premiers pas
@@ -28,17 +30,17 @@ postgresql.service - PostgreSQL RDBMS
 
 ```
 
-## Première connexion à mysql
+# Première connexion à PostgreSQL
 
 - Pour nous connecter nous allons utiliser la commande suivante :
 
-# ` sudo -i -u postgres`
+## ` sudo -i -u postgres`
 
-- Ce qui nosu permettra d'accéder au **Terminal PostegreSQL** avec :
+- Ce qui nous permettra d'accéder au **Terminal PostegreSQL** avec :
 
 # `psql`
 
-## Créer un mot de passe pour le superUtilisateur postgreS
+## mot de passe superUtilisateur postgreS
 
 - Une fois dans le terminal PostgreSQL **indiqué par postgres=#** , nous allons définir un mot de passe pour **postgres** qui est le **Superutilisateur** par défaut de PostgreSQL avec la commande suivante :
 
@@ -52,9 +54,25 @@ postgresql.service - PostgreSQL RDBMS
 
 `CREATE USER nom_utilisateur WITH PASSWORD 'mot_de_passe';`
 
+#### Ajout des Privilèges superutilisateur
+
 - Et lui accorder des privilèges \*_"SuperUtilisateur"_`
 
 `ALTER USER nom_utilisateur WITH SUPERUSER;`
+
+- Autoriser l’utilisateur à créer des bases de données :
+
+`ALTER ROLE nom_utilisateur WITH CREATEDB;`
+
+- Autoriser l’utilisateur à créer d'autres rôles :
+
+`ALTER ROLE nom_utilisateur WITH CREATEROLE;`
+
+#### Combiner tout les privilèges
+
+`ALTER ROLE nom_utilisateur WITH SUPERUSER CREATEDB CREATEROLE;`
+
+_PS: Si tout se déroule correctement le message **ALTER ROLE** s'affichera_
 
 ## Quitter psql
 
@@ -90,6 +108,51 @@ _pgAdmin 4 est une interface graphique complète pour administrer et gérer les 
 
 `sudo apt install pgcli`
 
-- à présent nous pouvons nous connecter avec nos identifiants/ mots de passe en suivant la section **Se connecter à PostgreSQL**
+- à présent nous pouvons nous connecter avec nos identifiants/ mots de passe en suivant la section **se connecter à PostgreSQL**
 
 `pgcli -U votre_utilisateur -d votre_base`
+
+- mais nous n'avons pas encore de **database**
+
+### Creation dans psql d'une BDD
+
+- Ainsi nous allons créer une database , qui sera validée par un message de confirmation
+
+```
+CREATE DATABASE helloworld;
+CREATE DATABASE
+```
+
+- Puis je vais à nouveau essayer de lancer
+
+`pgcli -U votre_utilisateur -d votre_base`
+
+- Mais il semble que la connexion par mot de passe ne soit pas configuré **( Peer authentication failed for user "meodel")**
+
+- Nous allons donc chercher **pg_hba.conf**
+
+`sudo find /etc -name pg_hba.conf`
+
+- Puis nous allons ouvrir le fichier correspondant pour l'éditor avec **nano**
+
+`sudo nano /etc/postgresql/16/main/pg_hba.conf`
+
+- Afin de modifier la ligne :
+
+`local   all             all                                     peer`
+
+- En :
+
+`local   all             all                                     md5`
+
+- Le changement à md5 indique à PostgreSQL de demander un mot de passe pour les connexions locales.
+
+- Puis nous allons fermer l'éditeur
+
+- Et on redémarre postgreSQL pour appliquer les modifications :
+
+`sudo systemctl restart postgresql`
+
+- et enfin ... nous sommes connectés à **PGCLI**
+
+## Tadaaaa !
