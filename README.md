@@ -1,12 +1,15 @@
-<h1 style="color: #008080;">PostgreSQL</h1>
+<h1 style="color: #008080;">PostgreSQL (Linux) </h1>
 
 ![postegrean](assets/img/postgre_ban.webp)
 
-<h1 style="color: #008080;">GET STARTED ( Linux)</h1>
+<h1 style="color: #008080;">Sommaire </h1>
 
 - [Setup](doc/setup_linux.md)
 - [Get Started ](doc/get_started.md)
 - [Commandes CLI](doc/commandes_cli.md)
+- [Memo](doc/memo.md)
+
+<h1 style="color: #008080;">Comparatif & Performances </h1>
 
 <h3 style="color: #ab638c"> Différences majeures entre PostegreSQL et MYSQL </h2>
 
