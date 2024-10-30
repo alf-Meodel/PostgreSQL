@@ -1,4 +1,4 @@
-<h1 style="color: #008080;">PostgreSQL (Linux) </h1>
+# `PostgreSQL (Linux)`
 
 ---
 
