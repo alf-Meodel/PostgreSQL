@@ -1,5 +1,7 @@
 <h1 style="color: #008080;">PostgreSQL (Linux) </h1>
 
+---
+
 ![postegrean](assets/img/postgre_ban.webp)
 
 <h1 style="color: #008080;">Sommaire </h1>
@@ -8,6 +10,8 @@
 - [Get Started ](doc/get_started.md)
 - [Commandes CLI](doc/commandes_cli.md)
 - [Memo](doc/memo.md)
+
+---
 
 <h1 style="color: #008080;">Comparatif & Performances </h1>
 
@@ -21,7 +25,10 @@
 | Performances             | Rapide en lecture                          | Optimal pour les requetes complexes                      |
 | Extensibilité            | Limitée en extensions et personnalisation. | Très extensible avec de nombreuses extensions .          |
 
-### Avantages de PostgreSQL :
+---
+
+<details>
+  <summary><strong style="font-size: 1.5em; font-weight: bold">Avantages de PostgreSQL :</strong></summary>
 
 <span style="color: #ab638c"></span>
 
@@ -29,8 +36,7 @@
 
 - **Transactions et ACID** : PostgreSQL applique les principes **ACID** pour des opérations de haute intégrité :
 
-  - **Atomicité** : Une transaction est "tout ou rien" ; <span style="color: #ab638c"> si une partie échoue, tout est annulé.</span>
-
+  - **Atomicité** : Une transaction est "tout ou rien" ; <span style="color: #ab638c">si une partie échoue, tout est annulé.</span>
   - **Cohérence** : <span style="color: #ab638c">La base reste organisée et valide avant et après chaque transaction.</span>
   - **Isolation** : <span style="color: #ab638c">Les transactions simultanées n’interfèrent pas entre elles</span>, garantissant des résultats précis.
   - **Durabilité** : <span style="color: #ab638c">Une fois validées, les données sont sauvegardées en permanence, même en cas de panne.</span>
@@ -39,7 +45,16 @@
 
 - **Performance** : Excellente pour traiter de grandes quantités de données et des requêtes complexes, bien adapté aux écritures et lectures intensives.
 
-### Cas d'usage adaptés :
+</details>
+
+<details>
+
+<summary>
+<strong style="font-size: 1.5em; font-weight: bold">
+Cas d'usage adaptés :
+</strong>
+
+</summary>
 
 - **Applications analytiques** : Idéal pour des analyses et rapports détaillés sur de grands volumes de données.
 - **Banques et Finances** : Gère des transactions sûres et précises, parfait pour des opérations bancaires complexes.
@@ -47,3 +62,6 @@
 - **Systèmes de gestion de données** : Excellente gestion de données variées comme des cartes géographiques ou des documents structurés (JSON).
 
 - **Applications critiques** : Idéal pour des services **où la disponibilité et la sécurité sont essentielles**, comme les **services de santé et de sécurité.**
+</details>
+
+---
