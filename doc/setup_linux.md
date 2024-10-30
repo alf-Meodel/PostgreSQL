@@ -1,6 +1,6 @@
 <h1 style="color: #008080;">LINUX POSTEGRESQL </h1>
 
-<h3 style="color: #ab638c"> GET STARTED </h2>
+<h1 style="color: #ab638c"> GET STARTED </h1>
 
 ## Premiers pas
 
@@ -37,3 +37,24 @@ postgresql.service - PostgreSQL RDBMS
 - Ce qui nosu permettra d'accéder au **Terminal PostegreSQL** avec :
 
 ## `psql`
+
+<h1 style="color: #ab638c"> Installation de pgAdmin 4 </h1>
+
+#### Introduction
+
+_pgAdmin 4 est une interface graphique complète pour administrer et gérer les bases de données PostgreSQL. Elle permet de créer, modifier et surveiller des bases de données facilement, sans ligne de commande._
+
+#### Installation
+
+- Dans un premier temps nous allons mettre à jour nos paquets
+
+`sudo apt update`
+
+- Puis nous allons installer la version desktop de **pgAdmin4** avec la commande :
+
+`sudo apt install pgadmin4-desktop `
+
+- Ce qui nous permettra de lancer la version desktop manuellement à partir de notre bureau
+- **PS : une version web existe**
+
+<h1 style="color: #ab638c"> Installation de pgCli </h1>
