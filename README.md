@@ -1,4 +1,4 @@
-![postegrean](assets/img/docs_top.png)
+![postegrean](assets/img/BULLE.png)
 
 # `PostgreSQL (Linux)`
 
