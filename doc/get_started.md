@@ -1,4 +1,4 @@
-![postegrean](/assets/img/notes0.png)
+![postegrean](/assets/img/lol.png)
 
 <h1 style="color: #008080;">GET STARTED </h1>
 
