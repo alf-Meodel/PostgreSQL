@@ -2,6 +2,8 @@
 
 # `PostgreSQL (Linux)`
 
+![postegrean](assets/img/docs_bot.png)
+
 ---
 
 ![postegrean](assets/img/postgre_ban.webp)
