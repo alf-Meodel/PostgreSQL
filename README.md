@@ -16,7 +16,7 @@
 
 <h1 style="color: #008080;">Comparatif & Performances </h1>
 
-<h3 style="color: #ab638c"> Différences majeures entre PostegreSQL et MYSQL </h2>
+<h3 style="color: #ab638c"> Différences majeures entre PostegreSQL et MYSQL </h3>
 
 | Critères                 | MySQL                                      | PostegreSQL                                              |
 | ------------------------ | ------------------------------------------ | -------------------------------------------------------- |

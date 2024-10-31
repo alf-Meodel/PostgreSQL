@@ -77,15 +77,31 @@ CREATE TABLE utilisateurs (
 SELECT 2
 ```
 
-#### Ajouter une COLUMN
+#### Modifier une table
+
+###### Ajouter une COLUMN
 
 `ALTER TABLE toto ADD COLUMN description TEXT;`
+
+`ALTER TABLE toto ADD COLUMN adresse VARCHAR(100);`
 
 - Cela nous indique que nous effectuons une action "destructrice / irréversible", que nous validons
 
 ```
 You're about to run a destructive command.
 Do you want to proceed? [y/N]:
+```
+
+###### Ajouter une COLUMN
+
+- Nous pouvons modifier une colonne existante pour changer son type de données ou ses contraintes _(comme NOT NULL)_.
+
+**Exemple :** Modifier la colonne age pour qu’elle accepte uniquement des valeurs positives (en ajoutant une contrainte CHECK) :
+
+```
+ALTER TABLE toto
+ALTER COLUMN age SET DATA TYPE INT,
+ADD CONSTRAINT positive_age CHECK (age > 0);
 ```
 
 #### Consulter la structure d'une table
