@@ -123,6 +123,10 @@ INSERT 0 1
 
 # Creation d'un index
 
+#### Tips
+
+_Quand nous créons une clé pirmaire un index est automatiquement créé_
+
 _Les index optimisent les recherches en accédant rapidement aux données. Dans notre exemple, PostgreSQL utilise automatiquement idx_email pour accélérer les requêtes sur email dans la table toto._
 
 - Création de l'index : Lorsqu’on crée un index (par exemple, idx_email sur la colonne email), PostgreSQL crée une structure de données interne qui rend les recherches sur cette colonne beaucoup plus rapides.

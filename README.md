@@ -9,6 +9,7 @@
 - [Setup](doc/setup_linux.md)
 - [Get Started ](doc/get_started.md)
 - [Commandes CLI](doc/commandes_cli.md)
+- [Foreign Key, Primary Key](doc/pk_fk.md)
 - [Memo](doc/memo.md)
 
 ---
