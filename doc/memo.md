@@ -2,17 +2,28 @@
 
 ## Sommaire
 
+- [ Tips ](#tips)
+- [ DCL, DDL, DML,DQL](#modifier-une-column)
+  - [DCL, Data Control Language](#les_databases)
+  - [DDL, Data Definition Language](#les_tables)
+  - [DML, Data Manipulation Language](#ajouter-une-column)
+  - [DQL, Data Query Language](#modifier-une-column)
+
 ---
 
-[↩️ Readme](/PostgreSQL/README.md)
+[↩️ Readme](/README.md)
 
 ---
+
+# Tips
 
 - Dans PostgreSQL, nosu ne pouvons pas créer de base de données directement depuis **pgcli**. Il faut sortir de **pgcli** et utiliser **psql** ou le **terminal PostgreSQL** :
 
 - En SQL, les chaînes de texte doivent être entourées de guillemets simples ('). Les guillemets doubles (") sont réservés aux noms de colonnes ou de tables.
 
-# Definitions
+---
+
+# DCL,DDL,DML,DQL
 
 <h2 style="color: #008080;">DCL</h2>
 

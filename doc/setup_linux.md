@@ -1,14 +1,27 @@
 <h1 style="color: #008080;">LINUX POSTEGRESQL </h1>
 
-## Sommaire
+# Sommaire
+
+- [Setup](#setup)
+  - [Premier pas](#premiers-pas)
+  - [Première connexion à PostgreSQL](#premiers-pas)
+  - [Mot de passe superUtilisateur postgreS](#premiers-pas)
+  - [Créer un nouvel utilisateur](#premiers-pas)
+  - [Quitter psql](#premiers-pas)
+- [Installation de pgAdmin 4](#pgadmin4)
+  - [Introduction](#premiers-pas)
+  - [Installation](#premiers-pas)
+  - [Premier pas](#premiers-pas)
+- [Installation de pgCli](#pgcli)
+  - [Creation dans psql d'une BDD](#premiers-pas)
 
 ---
 
-[↩️ Readme](/PostgreSQL/README.md)
+[↩️ Readme](/README.md)
 
 ---
 
-<h1 style="color: #ab638c"> GET STARTED </h1>
+<h2 style="color: #ab638c" id="setup"> SETUP </h2>
 
 ## Premiers pas
 
@@ -38,7 +51,7 @@ postgresql.service - PostgreSQL RDBMS
 
 [Go to Top ⬆️](#sommaire)
 
-# Première connexion à PostgreSQL
+## Première connexion à PostgreSQL
 
 - Pour nous connecter nous allons utiliser la commande suivante :
 
@@ -91,13 +104,13 @@ _PS: Si tout se déroule correctement le message **ALTER ROLE** s'affichera_
 
 [Go to Top ⬆️](#sommaire)
 
-<h1 style="color: #ab638c"> Installation de pgAdmin 4 </h1>
+<h1 style="color: #ab638c" id="pgadmin4"> Installation de pgAdmin 4 </h1>
 
-#### Introduction
+## Introduction
 
 _pgAdmin 4 est une interface graphique complète pour administrer et gérer les bases de données PostgreSQL. Elle permet de créer, modifier et surveiller des bases de données facilement, sans ligne de commande._
 
-#### Installation
+## Installation
 
 - Dans un premier temps nous allons mettre à jour nos paquets
 
@@ -112,7 +125,7 @@ _pgAdmin 4 est une interface graphique complète pour administrer et gérer les 
 
 [Go to Top ⬆️](#sommaire)
 
-<h1 style="color: #ab638c"> Installation de pgCli </h1>
+<h1 style="color: #ab638c" id="pgcli"> Installation de pgCli </h1>
 
 - Dans un premier temps nous allons mettre à jour nos paquets
 
@@ -128,7 +141,7 @@ _pgAdmin 4 est une interface graphique complète pour administrer et gérer les 
 
 - mais nous n'avons pas encore de **database**
 
-### Creation dans psql d'une BDD
+## Creation dans psql d'une BDD
 
 - Ainsi nous allons créer une database , qui sera validée par un message de confirmation
 

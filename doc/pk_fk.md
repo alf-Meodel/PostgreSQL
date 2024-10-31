@@ -1,12 +1,12 @@
 <h1 style="color: #008080;">GET STARTED </h1>
 
-![pk_fp](/PostgreSQL/assets/img/fk_pk.webp)
+![pk_fp](/assets/img/fk_pk.webp)
 
 ## Sommaire
 
 ---
 
-[↩️ Readme](/PostgreSQL/README.md)
+[↩️ Readme](/README.md)
 
 ---
 

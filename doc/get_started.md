@@ -12,7 +12,7 @@
 
 ---
 
-[↩️ Readme](/PostgreSQL/README.md)
+[↩️ Readme](/README.md)
 
 ---
 
