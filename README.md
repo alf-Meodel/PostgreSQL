@@ -1,4 +1,4 @@
-![postegrean](assets/img/lol.png)
+![postegrean](assets/img/docs_top.png)
 
 # `PostgreSQL (Linux)`
 
@@ -6,7 +6,7 @@
 
 ![postegrean](assets/img/postgre_ban.webp)
 
-![postegrean](assets/img/lol.png)
+![postegrean](assets/img/docs_top.png)
 
 <h1 style="color: #008080;">Sommaire </h1>
 
@@ -16,7 +16,7 @@
 - [Foreign Key, Primary Key](doc/pk_fk.md)
 - [Memo](doc/memo.md)
 
-![postegrean](assets/img/lol.png)
+![postegrean](assets/img/docs_bot.png)
 
 ---
 
@@ -73,4 +73,4 @@ Cas d'usage adaptés :
 
 ---
 
-![postegrean](assets/img/mep_bot.png)
+![postegrean](assets/img/docs_bot.png)
