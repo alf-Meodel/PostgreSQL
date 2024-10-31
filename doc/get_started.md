@@ -2,6 +2,14 @@
 
 ---
 
+[Retour au Readme](/PostgreSQL/README.md)
+
+# Sommaire
+
+[Ajouter une COLUMN](#ajouter-une-column)
+[Modifier une COLUMN](#modifier-une-column)
+[Supprimer une COLUMN](#supprimer-une-column)
+
 # Tools
 
 - [Mokaroo](https://www.mockaroo.com/)
@@ -92,7 +100,7 @@ You're about to run a destructive command.
 Do you want to proceed? [y/N]:
 ```
 
-###### Ajouter une COLUMN
+###### Modifier une COLUMN
 
 - Nous pouvons modifier une colonne existante pour changer son type de données ou ses contraintes _(comme NOT NULL)_.
 
@@ -102,6 +110,15 @@ Do you want to proceed? [y/N]:
 ALTER TABLE toto
 ALTER COLUMN age SET DATA TYPE INT,
 ADD CONSTRAINT positive_age CHECK (age > 0);
+```
+
+###### Supprimer une COLUMN
+
+- Pour supprimer une colonne de la table toto, utilisez DROP COLUMN.
+
+```
+ALTER TABLE toto
+DROP COLUMN description;
 ```
 
 #### Consulter la structure d'une table
@@ -138,6 +155,8 @@ INSERT 0 1
 ` SELECT * FROM toto;`
 
 # Creation d'un index
+
+[Go to Top ⬆️](#sommaire)
 
 #### Tips
 

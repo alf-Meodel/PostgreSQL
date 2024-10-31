@@ -2,9 +2,30 @@
 
 ---
 
+- [Navigation](#navigation)
 - [Création d'une table](#création-dune-table)
 - [PostgreSQL](#postgre)
 - [Pgcli](#pgcli)
+
+---
+
+---
+
+<h2 style="color: #ab638c" id="navigation">Navigation</h2>
+
+#### Frequents
+
+**\l :** Lister toutes les bases de données
+**\dt** : Lister toutes les tables dans la base de données active
+**\d nom_table** : Afficher la description d'une table
+**\d+ nom_table :** : Pour voir uniquement les colonnes et leurs types
+**\q :** Quitter pgli
+
+#### Autre
+
+**\di nom_table:** Afficher les index d'une table
+**\du :** lister tous les index associés à une table
+**\dn :** Voir les schémas dans la base de données actuelle
 
 ---
 
