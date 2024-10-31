@@ -3,3 +3,27 @@
 ### Création d'une table
 
 Dans PostgreSQL, nosu ne pouvons pas créer de base de données directement depuis **pgcli**. Il faut sortir de **pgcli** et utiliser **psql** ou le **terminal PostgreSQL** :
+
+---
+
+### Postegre
+
+- Pour nous connecter nous allons utiliser la commande suivante :
+
+### ` sudo -i -u postgres`
+
+- Ce qui nous permettra d'accéder au **Terminal PostegreSQL** avec :
+
+## `psql`
+
+---
+
+### Pgcli
+
+- lancer **pgcli**
+
+`pgcli -U votre_utilisateur -d votre_base`
+
+---
+
+**f3** : activer le multiligne

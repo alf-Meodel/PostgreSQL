@@ -49,6 +49,8 @@ _En PostgreSQL, quand on crée une nouvelle base de données, **on ne peut pas s
 
 # Les tables
 
+#### Créer une table
+
 - Voici comment nous créons une table
 
 ```
@@ -60,6 +62,8 @@ CREATE TABLE utilisateurs (
 );
 ```
 
+#### Consulter les tables
+
 - Ensuite nous allons vérifier que la table à été correctement ajouté avec **\ dt**
 
 - ce qui nous donne une résultat dans le style suivant en affichant toutes les tables :
@@ -68,9 +72,38 @@ CREATE TABLE utilisateurs (
 | Schema | Name         | Type  | Owner  |
 |--------+--------------+-------+--------|
 | public | nom_table    | table | meodel |
-| public | utilisateurs | table | meodel |
+| public | toto | table | meodel |
 +--------+--------------+-------+--------+
 SELECT 2
+```
+
+#### Ajouter une COLUMN
+
+`ALTER TABLE toto ADD COLUMN description TEXT;`
+
+- Cela nous indique que nous effectuons une action "destructrice / irréversible", que nous validons
+
+```
+You're about to run a destructive command.
+Do you want to proceed? [y/N]:
+```
+
+#### Consulter la structure d'une table
+
+- Pour ce faire nous allons utiliser **\d toto** afin de consulter la description de la table toto
+
+```
++-------------+------------------------+----------------------------------------------------+
+| Column      | Type                   | Modifiers                                          |
+|-------------+------------------------+----------------------------------------------------|
+| id          | integer                |  not null default nextval('toto_id_seq'::regclass) |
+| nom         | character varying(50)  |                                                    |
+| age         | integer                |                                                    |
+| email       | character varying(100) |                                                    |
+| description | text                   |                                                    |
++-------------+------------------------+----------------------------------------------------+
+
+
 ```
 
 # Rôles
