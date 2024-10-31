@@ -2,7 +2,7 @@
 
 # `PostgreSQL (Linux)`
 
-![postegrean](assets/img/docs_bot.png)
+![postegrean](assets/img/line1.png)
 
 ---
 
@@ -18,11 +18,13 @@
 - [Foreign Key, Primary Key](doc/pk_fk.md)
 - [Memo](doc/memo.md)
 
-![postegrean](assets/img/docs_bot.png)
+![postegrean](assets/img/line1.png)
 
 ---
 
 <h1 style="color: #008080;">Comparatif & Performances </h1>
+
+![postegrean](assets/img/line0.png)
 
 <h3 style="color: #ab638c"> Différences majeures entre PostegreSQL et MYSQL </h3>
 
@@ -35,6 +37,8 @@
 | Extensibilité            | Limitée en extensions et personnalisation. | Très extensible avec de nombreuses extensions .          |
 
 ---
+
+![postegrean](assets/img/line1.png)
 
 <details>
   <summary><strong style="font-size: 1.5em; font-weight: bold">Avantages de PostgreSQL :</strong></summary>
