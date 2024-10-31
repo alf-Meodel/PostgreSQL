@@ -1,5 +1,7 @@
 <h1 style="color: #008080;">LINUX POSTEGRESQL </h1>
 
+## Sommaire
+
 ---
 
 [↩️ Readme](/PostgreSQL/README.md)
@@ -34,6 +36,8 @@ postgresql.service - PostgreSQL RDBMS
 
 ```
 
+[Go to Top ⬆️](#sommaire)
+
 # Première connexion à PostgreSQL
 
 - Pour nous connecter nous allons utiliser la commande suivante :
@@ -44,7 +48,9 @@ postgresql.service - PostgreSQL RDBMS
 
 # `psql`
 
-## mot de passe superUtilisateur postgreS
+[Go to Top ⬆️](#sommaire)
+
+## Mot de passe superUtilisateur postgreS
 
 - Une fois dans le terminal PostgreSQL **indiqué par postgres=#** , nous allons définir un mot de passe pour **postgres** qui est le **Superutilisateur** par défaut de PostgreSQL avec la commande suivante :
 
@@ -83,6 +89,8 @@ _PS: Si tout se déroule correctement le message **ALTER ROLE** s'affichera_
 - la commande recommandé est **/q** mais elle ne marche pas dans mon cas
 - j'utilise donc **ctrl D**
 
+[Go to Top ⬆️](#sommaire)
+
 <h1 style="color: #ab638c"> Installation de pgAdmin 4 </h1>
 
 #### Introduction
@@ -101,6 +109,8 @@ _pgAdmin 4 est une interface graphique complète pour administrer et gérer les 
 
 - Ce qui nous permettra de lancer la version desktop manuellement à partir de notre bureau
 - **PS : une version web existe**
+
+[Go to Top ⬆️](#sommaire)
 
 <h1 style="color: #ab638c"> Installation de pgCli </h1>
 
@@ -160,3 +170,5 @@ CREATE DATABASE
 - et enfin ... nous sommes connectés à **PGCLI**
 
 ## Tadaaaa !
+
+[Go to Top ⬆️](#sommaire)

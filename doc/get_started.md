@@ -2,11 +2,13 @@
 
 ---
 
-# Sommaire
+## Sommaire
 
-[Ajouter une COLUMN](#ajouter-une-column)
-[Modifier une COLUMN](#modifier-une-column)
-[Supprimer une COLUMN](#supprimer-une-column)
+- [Les Databases](#les_databases)
+- [Les Tables](#les_tables)
+  - [Ajouter une COLUMN](#ajouter-une-column)
+  - [Modifier une COLUMN](#modifier-une-column)
+  - [Supprimer une COLUMN](#supprimer-une-column)
 
 ---
 
@@ -37,7 +39,10 @@ _En PostgreSQL, quand on crée une nouvelle base de données, **on ne peut pas s
 - Nous allons donc nous deconnecter avec **ctrl D**
 - Puis nous reconnecter en spécifiant la database ici test_DB
 
-<h3 style="color: #AB638C;">Les Databases </h1>
+[Go to Top ⬆️](#sommaire)
+
+<!-- Les Databases  -->
+<h3 style="color: #AB638C;" id="les_databases">Les Databases </h1>
 
 - à partir de pgcli nous pouvons afficher les databases en effectuant la commande `\l`
 - ce qui va afficher les databases présentes dans notre système sous la forme suivante
@@ -59,7 +64,10 @@ _En PostgreSQL, quand on crée une nouvelle base de données, **on ne peut pas s
 
 `pgcli -U postgres -d nouvelle_database`
 
-<h3 style="color: #AB638C;">Les Tables</h1>
+[Go to Top ⬆️](#sommaire)
+
+<!-- Les tables  -->
+<h3 style="color: #AB638C;" id="les_tables">Les Tables</h3>
 
 #### Créer une table
 
@@ -158,9 +166,9 @@ INSERT 0 1
 
 ` SELECT * FROM toto;`
 
-# Creation d'un index
-
 [Go to Top ⬆️](#sommaire)
+
+# Creation d'un index
 
 #### Tips
 
@@ -184,8 +192,12 @@ _Les index optimisent les recherches en accédant rapidement aux données. Dans 
 
 - Si PostgreSQL utilise l’index, le plan de requête affichera Index Scan (ou un terme similaire), montrant que l'index a été pris en compte pour optimiser la requête.
 
+[Go to Top ⬆️](#sommaire)
+
 # Rôles
 
 #### Bonnes pratiques
 
 Pour une bonne gestion des rôles dans PostgreSQL, il faut mieux créer des **rôles basés sur les responsabilités** (ex. `role_read_only`, `role_data_entry`) puis leur attribuer des permissions adaptées. ensuite nous allons créer des utilisateurs afin de leur assigner uniquement les rôles nécessaires, sans leur donner directement de permissions. Cette approche renforce la sécurité, simplifie la gestion et permet d'ajuster facilement les accès. Séparez les rôles d’administration et d’application pour un meilleur contrôle.
+
+[Go to Top ⬆️](#sommaire)
