@@ -2,13 +2,17 @@
 
 ---
 
-[Retour au Readme](/PostgreSQL/README.md)
-
 # Sommaire
 
 [Ajouter une COLUMN](#ajouter-une-column)
 [Modifier une COLUMN](#modifier-une-column)
 [Supprimer une COLUMN](#supprimer-une-column)
+
+---
+
+[↩️ Readme](/PostgreSQL/README.md)
+
+---
 
 # Tools
 
