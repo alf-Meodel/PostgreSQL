@@ -1,4 +1,4 @@
-# `GET STARTED`
+<h1 style="color: #008080;">GET STARTED </h1>
 
 ---
 
@@ -25,7 +25,7 @@ _En PostgreSQL, quand on crée une nouvelle base de données, **on ne peut pas s
 - Nous allons donc nous deconnecter avec **ctrl D**
 - Puis nous reconnecter en spécifiant la database ici test_DB
 
-# Les Databases
+<h3 style="color: #AB638C;">Les Databases </h1>
 
 - à partir de pgcli nous pouvons afficher les databases en effectuant la commande `\l`
 - ce qui va afficher les databases présentes dans notre système sous la forme suivante
@@ -47,7 +47,7 @@ _En PostgreSQL, quand on crée une nouvelle base de données, **on ne peut pas s
 
 `pgcli -U postgres -d nouvelle_database`
 
-# Les tables
+<h3 style="color: #AB638C;">Les Tables</h1>
 
 #### Créer une table
 
@@ -102,9 +102,44 @@ Do you want to proceed? [y/N]:
 | email       | character varying(100) |                                                    |
 | description | text                   |                                                    |
 +-------------+------------------------+----------------------------------------------------+
+```
 
+#### Insérer des données
+
+- Pour ajouter manuelement des données **dans la table toto** nous allons faire
 
 ```
+helloworld> INSERT INTO toto (nom,age, email, description) VALUES ('Toto', 30, '
+ toto@gmail.com', 'Nouveau client');
+INSERT 0 1
+
+```
+
+#### Afficher les données d'une table
+
+- Pour afficher les données d'une table nous allons faire
+
+` SELECT * FROM toto;`
+
+# Creation d'un index
+
+_Les index optimisent les recherches en accédant rapidement aux données. Dans notre exemple, PostgreSQL utilise automatiquement idx_email pour accélérer les requêtes sur email dans la table toto._
+
+- Création de l'index : Lorsqu’on crée un index (par exemple, idx_email sur la colonne email), PostgreSQL crée une structure de données interne qui rend les recherches sur cette colonne beaucoup plus rapides.
+
+`CREATE INDEX idx_email ON toto (email);`
+
+- Utilisation automatique de l'index : Lorsque vous exécutez une requête qui implique une condition sur la colonne email, PostgreSQL examine si l'index idx_email peut optimiser cette requête. Si c'est le cas, PostgreSQL utilise automatiquement cet index pour accélérer la recherche.
+
+`SELECT * FROM toto WHERE email = 'toto@gmail.com';`
+
+- Dans ce cas, PostgreSQL voit que email est indexé avec idx_email. Si l'index est pertinent pour cette recherche, il est automatiquement utilisé pour trouver les lignes correspondantes plus rapidement.
+
+- Plan d’exécution (pour vérifier) : Si vous souhaitez voir comment PostgreSQL exécute la requête, utilisez EXPLAIN pour obtenir un aperçu du plan d’exécution. Cela vous indiquera si PostgreSQL utilise l'index ou non :
+
+`EXPLAIN SELECT * FROM toto WHERE email = 'toto@gmail.com';`
+
+- Si PostgreSQL utilise l’index, le plan de requête affichera Index Scan (ou un terme similaire), montrant que l'index a été pris en compte pour optimiser la requête.
 
 # Rôles
 
