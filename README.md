@@ -1,14 +1,12 @@
-![postegrean](assets/img/BULLE.png)
+![postegrean](assets/structure/pink_cut_t1.png)
 
 # `PostgreSQL (Linux)`
 
-![postegrean](assets/img/line1.png)
-
----
+<!-- Main IMG -->
 
 ![postegrean](assets/img/postgre_ban.webp)
 
-![postegrean](assets/img/docs_top.png)
+![postegrean](assets/structure/pink_cut_b1.png)
 
 <h1 style="color: #008080;">Sommaire </h1>
 
@@ -18,7 +16,7 @@
 - [Foreign Key, Primary Key](doc/pk_fk.md)
 - [Memo](doc/memo.md)
 
-![postegrean](assets/img/line1.png)
+![postegrean](assets/mep/b_green3.png)
 
 ---
 
@@ -79,4 +77,4 @@ Cas d'usage adaptés :
 
 ---
 
-![postegrean](assets/img/docs_bot.png)
+![postegrean](assets/mep/b_green2.png)
