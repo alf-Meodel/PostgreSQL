@@ -20,6 +20,7 @@
   - [Manipulation des données avec DML](#manipulation-des-données-avec-dml)
   - [Creation d une Database](#creation-d-une-database)
   - [Creation d'une Table Type ](#creation-d-une-table-type)
+  - [Grant / Accorder](#grant)
 
 - [Liste des Dailys](#dailys)
 
@@ -335,9 +336,149 @@ VALUES
 
 `SELECT * FROM table_test;`
 
+
+## GRANT
+
+##### VOIR LES PRIVILÈGES
+
+`\dp mockaroo_tes`
+
+
+##### ACCORDER DES PRIVILEGES (pour Franck):
+
+- Pour attribuer des privilèges, on utilise GRANT en spécifiant le **type de droit** ( SELECT, INSERT, UPDATE, etc.), **la cible** (base de données, table ou colonne), **et l’utilisateur.**
+
+- Supposons que nous voulons donner à Franck certains privilèges sur la table mockaroo_test :
+
+- **Creation de l'user Franck**
+
+```
+CREATE USER franck WITH PASSWORD 'votre_mot_de_passe';
+CREATE ROLE
+```
+
+- Ensuite nous allons accorder des privilèges à Franck sur la table mockaroo_test TO franck
+
+- **Le droit de lecture pour Franck :**
+
+```
+GRANT SELECT ON TABLE mockaroo_test TO franck;
+```
+
+- **Puis le droit d'inserer des données pour Franck :**
+
+```
+GRANT INSERT ON TABLE mockaroo_test TO franck;
+```
+
+- Rappel du nom des colonnes **\d mockaroo_test**
+
+```
++--------+-----------------------+-----------+
+| Column | Type                  | Modifiers |
+|--------+-----------------------+-----------|
+| id     | integer               |           |
+| prenom | character varying(50) |           |
+| nom    | character varying(50) |           |
+| email  | character varying(50) |           |
++--------+-----------------------+-----------+
+```
+
+- **Puis le droit de mise à jour (UPDATE) uniquement pour la colonne prenom (toujours TO Franck ^^) :**
+
+```
+GRANT UPDATE (prenom) ON TABLE mockaroo_test TO franck;
+```
+
+##### REVOQUER LES PRIVILEGES (pour Franck):
+
+- Retirer le droit de lecture (SELECT) :
+
+```
+REVOKE SELECT ON TABLE mockaroo_test FROM franck;
+```
+
+- Retirer le droit de mise à jour (UPDATE) sur la colonne prenom :
+
+```
+REVOKE UPDATE (prenom) ON TABLE mockaroo_test FROM franck;
+```
+
+#### VERIFICATIONS :
+
+- Nous allons vérifier l'exitence de l'utilisateur franck  
+
+`SELECT rolname FROM pg_roles WHERE rolname = 'franck';`
+
+```
++---------+
+| rolname |
+|---------|
+| franck  |
++---------+
+SELECT 1
+```
+
+- Puis nous allons vérifier les privilèges de franck **sur la table mockaroo_test** 
+
+```
+SELECT grantee, privilege_type
+FROM information_schema.role_table_grants
+WHERE table_name = 'mockaroo_test' AND grantee = 'franck';
+```
+
+- Ce qui nous donnera quelque chose de semblable à 
+
+```
++---------+----------------+
+| grantee | privilege_type |
+|---------+----------------|
+| franck  | INSERT         |
+| franck  | SELECT         |
++---------+----------------+
+```
+
+- Je remarque que L'update prenom n'est pas visible 
+
+```
+SELECT grantee, table_name, column_name, privilege_type
+FROM information_schema.column_privileges
+WHERE table_name = 'mockaroo_test' AND grantee = 'franck';
+```
+- Ce qui nous donne un schema du type : 
+
+```
++---------+---------------+-------------+----------------+
+| grantee | table_name    | column_name | privilege_type |
+|---------+---------------+-------------+----------------|
+| franck  | mockaroo_test | prenom      | UPDATE         |
+| franck  | mockaroo_test | prenom      | SELECT         |
+| franck  | mockaroo_test | nom         | SELECT         |
+| franck  | mockaroo_test | id          | INSERT         |
+| franck  | mockaroo_test | prenom      | INSERT         |
+| franck  | mockaroo_test | id          | SELECT         |
+| franck  | mockaroo_test | nom         | INSERT         |
+| franck  | mockaroo_test | email       | INSERT         |
+| franck  | mockaroo_test | email       | SELECT         |
++---------+---------------+-------------+----------------+
+```
+
+
+
+<a href="#sommaire">
+  <img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+</a>
+
 # Get started Mokaroo
 
-- Premiere etape
+- Pour installer une base de donnée avec Mockaroo il faut créer notre base de donnée sur le site , choisir SQL en export puis **construire notre BDD** 
+
+- Puis dans **pgcli** nous allons ajouter après **\i** la route correspondant à notre fichier 
+
+`\i /home/meodel/Téléchargements/mockaroo_test.sql`
+
+
+
 
 <!-- ![postegrean](assets/img/border/cadre_white_b.png) -->
 
@@ -350,6 +491,10 @@ VALUES
 </a>
 
 ## Mercredi 30/10/2024 :
+
+<a href="#sommaire">
+  <img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+</a>
 
 ### Introduction à PostgreSQL et DCL :
 
@@ -377,12 +522,12 @@ VALUES
     - [x] Savoir construire des requêtes CREATE USER
     - [x] Savoir modifier des utilisateurs avec ALTER USER
     - [x] Savoir supprimer des utilisateurs avec DROP USER
-    - [ ] Savoir utiliser les rôles PostgreSQL
+    - [x] Savoir utiliser les rôles PostgreSQL
 
-  - [ ] Gestion des droits
+  - [x] Gestion des droits
 
-    - [ ] Savoir attribuer des privilèges avec GRANT
-      - [ ] Droits sur les bases de données
+    - [x] Savoir attribuer des privilèges avec GRANT
+      - [x] Droits sur les bases de données
       - [ ] Droits sur les tables
       - [ ] Droits sur les colonnes
     - [ ] Gérer la révocation avec REVOKE
@@ -394,7 +539,12 @@ VALUES
     - [ ] Quand utiliser des rôles plutôt que des utilisateurs individuels ?
     - [ ] Comment auditer efficacement les droits d'accès ?
 
+
 ## Jeudi 31/10/2024 :
+
+<a href="#sommaire">
+  <img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+</a>
 
 ### SQL - DDL et DML
 
@@ -438,6 +588,10 @@ VALUES
 
 ## Jeudi 31/10/2024 :
 
+<a href="#sommaire">
+  <img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+</a>
+
 ### SQL - DDL et DML
 
 - [ ] Data Definition Language (DDL)
@@ -478,6 +632,10 @@ VALUES
   - [ ] Manipulation des données
 
 ## Lundi 04/11/2024 :
+
+<a href="#sommaire">
+  <img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+</a>
 
 ### SQL - Data Query Language (DQL)
 
