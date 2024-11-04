@@ -2,7 +2,7 @@
 
 ![postegrean](/assets/structure/test_line_b1.png)
 
-![postegrean](/assets/img/border/cadre_multi_t.png)
+<!-- ![postegrean](/assets/img/border/cadre_multi_t.png) -->
 
 ## Sommaire
 
