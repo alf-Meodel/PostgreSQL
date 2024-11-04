@@ -6,6 +6,7 @@
 
 ## Sommaire
 
+- [First Steps](#first-steps)
 - [Les Databases](#les_databases)
 - [Généralités sur les Tables](#les_tables)
   - [Ajouter une COLUMN](#ajouter-une-column)
@@ -13,19 +14,24 @@
   - [Supprimer une COLUMN](#supprimer-une-column)
   - [Gerer une table](#gerer-une-table)
 - [Mokaroo](#get-started-mokaroo)
-- [Dailys](#dailys)
+- [Application des Dailys :](#dailys)
 
   - [Drop and Truncate](#utiliser-drop-&-truncate)
   - [Manipulation des données avec DML](#manipulation-des-données-avec-dml)
+  - [Creation d une Database](#creation-d-une-database)
   - [Creation d'une Table Type ](#creation-d-une-table-type)
+
+- [Liste des Dailys](#dailys)
 
 ![postegrean](/PostgreSQL/assets/img/border/cadre_white_b.png)
 
----
+![postegrean](/PostgreSQL/assets/img/line/pink_point_line_l.png)
 
 <a href="/PostgreSQL/README.md">
   <img src="/PostgreSQL/assets/img/button/home_page.png" alt="Lire la suite" style="width: 150px; height: auto;">
 </a>
+
+![postegrean](/PostgreSQL/assets/img/line/pink_point_line_r.png)
 
 ### Tools :
 
@@ -286,6 +292,10 @@ Supprimer la table table_test complètement (efface toute la structure et les do
 
 `DROP TABLE table_test;`
 
+# Creation d une Database
+
+`CREATE DATABASE gestion_entreprise;`
+
 # Creation d une Table Type
 
 ```
@@ -339,8 +349,6 @@ VALUES
 <img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
-# Objectifs journaliers
-
 ## Mercredi 30/10/2024 :
 
 ### Introduction à PostgreSQL et DCL :
@@ -386,18 +394,16 @@ VALUES
     - [ ] Quand utiliser des rôles plutôt que des utilisateurs individuels ?
     - [ ] Comment auditer efficacement les droits d'accès ?
 
-# Objectifs journaliers
-
 ## Jeudi 31/10/2024 :
 
 ### SQL - DDL et DML
 
 - [x] Data Definition Language (DDL)
 
-  - [ ] Savoir créer avec CREATE
-    - [ ] Base de données
-    - [ ] Table
-    - [ ] Index
+  - [x] Savoir créer avec CREATE
+    - [x] Base de données
+    - [x] Table
+    - [x] Index
   - [x] Savoir modifier avec ALTER
     - [x] Savoir ajouter une colonne
     - [x] Savoir modifier une colonne
@@ -429,8 +435,6 @@ VALUES
 
   - [ ] Création d'une base de données complète
   - [ ] Manipulation des données
-
-  # Objectifs journaliers
 
 ## Jeudi 31/10/2024 :
 
@@ -473,8 +477,6 @@ VALUES
   - [ ] Création d'une base de données complète
   - [ ] Manipulation des données
 
-# Objectifs journaliers
-
 ## Lundi 04/11/2024 :
 
 ### SQL - Data Query Language (DQL)
@@ -505,3 +507,7 @@ VALUES
 
   - [ ] Savoir utiliser DISTINCT
   - [ ] Savoir utiliser LIMIT et OFFSET
+
+<a href="#sommaire">
+<img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+</a>

@@ -11,8 +11,8 @@
 - [Setup](doc/setup_linux.md)
 - [Get Started ](doc/get_started.md)
 - [Commandes CLI](doc/commandes_cli.md)
-- [Foreign Key, Primary Key](doc/pk_fk.md)
-- [Memo](doc/memo.md)
+- [Les Contraintes](doc/les-contraintes.md)
+- [Mémo](doc/memo.md)
 
 ![postegrean](assets/mep/b_green3.png)
 
@@ -71,6 +71,4 @@ Cas d'usage adaptés :
 
 ---
 
-<a href="/PostgreSQL/README.md">
-  <img src="/PostgreSQL/assets/img/button/home_page.png" alt="Home page" style="width: 150px; height: auto;">
-</a>
+![postegrean](assets/mep/b_green2.png)
