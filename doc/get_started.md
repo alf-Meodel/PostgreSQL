@@ -9,10 +9,12 @@
   - [Ajouter une COLUMN](#ajouter-une-column)
   - [Modifier une COLUMN](#modifier-une-column)
   - [Supprimer une COLUMN](#supprimer-une-column)
+  - [Gerer une table](#gerer-une-table)
+- [Mokaroo](#get-started-mokaroo)
+- [Dailys](#dailys)
+  - [Drop and Truncate](#utiliser-drop-&-truncate)
 
 ---
-
-[↩️ Readme](/README.md)
 
 <a href="/PostgreSQL/README.md">
   <img src="/PostgreSQL/assets/img/button/home_page.png" alt="Lire la suite" style="width: 150px; height: auto;">
@@ -20,7 +22,7 @@
 
 ---
 
-# Tools
+# Tools :
 
 - [Mokaroo](https://www.mockaroo.com/)
 
@@ -43,10 +45,11 @@ _En PostgreSQL, quand on crée une nouvelle base de données, **on ne peut pas s
 - Nous allons donc nous deconnecter avec **ctrl D**
 - Puis nous reconnecter en spécifiant la database ici test_DB
 
-[Go to Top ⬆️](#sommaire)
+<a href="#sommaire">
+  <img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+</a>
 
-<!-- Les Databases  -->
-<h3 style="color: #AB638C;" id="les_databases">Les Databases </h1>
+### Les Datases
 
 - à partir de pgcli nous pouvons afficher les databases en effectuant la commande `\l`
 - ce qui va afficher les databases présentes dans notre système sous la forme suivante
@@ -68,7 +71,9 @@ _En PostgreSQL, quand on crée une nouvelle base de données, **on ne peut pas s
 
 `pgcli -U postgres -d nouvelle_database`
 
-[Go to Top ⬆️](#sommaire)
+<a href="#sommaire">
+  <img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+</a>
 
 <!-- Les tables  -->
 <h3 style="color: #AB638C;" id="les_tables">Les Tables</h3>
@@ -170,7 +175,9 @@ INSERT 0 1
 
 ` SELECT * FROM toto;`
 
-[Go to Top ⬆️](#sommaire)
+<a href="#sommaire">
+  <img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+</a>
 
 # Creation d'un index
 
@@ -196,7 +203,9 @@ _Les index optimisent les recherches en accédant rapidement aux données. Dans 
 
 - Si PostgreSQL utilise l’index, le plan de requête affichera Index Scan (ou un terme similaire), montrant que l'index a été pris en compte pour optimiser la requête.
 
-[Go to Top ⬆️](#sommaire)
+<a href="#sommaire">
+  <img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+</a>
 
 # Rôles
 
@@ -204,4 +213,226 @@ _Les index optimisent les recherches en accédant rapidement aux données. Dans 
 
 Pour une bonne gestion des rôles dans PostgreSQL, il faut mieux créer des **rôles basés sur les responsabilités** (ex. `role_read_only`, `role_data_entry`) puis leur attribuer des permissions adaptées. ensuite nous allons créer des utilisateurs afin de leur assigner uniquement les rôles nécessaires, sans leur donner directement de permissions. Cette approche renforce la sécurité, simplifie la gestion et permet d'ajuster facilement les accès. Séparez les rôles d’administration et d’application pour un meilleur contrôle.
 
-[Go to Top ⬆️](#sommaire)
+<a href="#sommaire">
+  <img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+</a>
+
+# GERER UNE TABLE
+
+### Creation d'une table table_test
+
+```
+    CREATE TABLE table_test (
+    id SERIAL PRIMARY KEY,
+    prenom VARCHAR(50),
+    nom VARCHAR(50),
+    email VARCHAR(100),
+    age INTEGER,
+    date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+```
+
+### AJOUTER UNE COLONNE DANS table_test
+
+`ALTER TABLE table_test ADD COLUMN adresse VARCHAR(100); `
+
+### MODIFIER LA LONGUEUR DE la COLUMN EMAIL
+
+`ALTER TABLE table_test ALTER COLUMN email TYPE VARCHAR(150);`
+
+### Ajouter une colonne telephone avec une contrainte NOT NULL
+
+`ALTER TABLE table_test ADD COLUMN telephone VARCHAR(15) NOT NULL;`
+
+### Supprimer la colonne age
+
+`ALTER TABLE table_test DROP COLUMN age;`
+
+# Utiliser DROP & TRUNCATE
+
+TRUNCATE TABLE table_test;
+
+## Vider la table sans la supprimer
+
+`TRUNCATE TABLE table_test;`
+
+# Get started Mokaroo
+
+- Premiere etape
+
+<!-- ![postegrean](assets/img/border/cadre_white_b.png) -->
+
+![postegrean](/PostgreSQL/assets/img/border/cadre_multi_t.png)
+
+# Dailys
+
+<a href="#sommaire">
+<img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+</a>
+
+# Objectifs journaliers
+
+## Mercredi 30/10/2024 :
+
+### Introduction à PostgreSQL et DCL :
+
+- [x] Découverte de PostgreSQL
+
+  - [x] Identifier les différences entre MySQL et PostgreSQL
+  - [x] Savoir Expliquer les avantages de PostgreSQL
+  - [x] Savoir Choisir les cas d'usage adaptés à PostgreSQL
+
+- [x] Installation et Configuration
+
+  - [x] Installation de PostgreSQL sur la machine
+  - [x] Installation de pgAdmin 4
+  - [x] Installation de pgcli
+  - [x] Configuration initiale
+    - [x] Ports
+    - [x] Mot de passe postgres
+    - [x] Création du premier utilisateur
+  - [x] Test de la connexion
+
+- [x] Data Control Language (DCL)
+
+  - [x] Gestion des utilisateurs
+
+    - [x] Savoir construire des requêtes CREATE USER
+    - [x] Savoir modifier des utilisateurs avec ALTER USER
+    - [ ] Savoir supprimer des utilisateurs avec DROP USER
+    - [ ] Savoir utiliser les rôles PostgreSQL
+
+  - [ ] Gestion des droits
+
+    - [ ] Savoir attribuer des privilèges avec GRANT
+      - [ ] Droits sur les bases de données
+      - [ ] Droits sur les tables
+      - [ ] Droits sur les colonnes
+    - [ ] Gérer la révocation avec REVOKE
+      - [ ] Comment retirer des droits sur une base de données, une table ou une colonne ?
+      - [ ] Quel est l'impact d'une révocation en cascade ?
+
+  - [ ] Les bonnes pratiques de sécurité
+    - [ ] Comment appliquer le principe du moindre privilège dans PostgreSQL ?
+    - [ ] Quand utiliser des rôles plutôt que des utilisateurs individuels ?
+    - [ ] Comment auditer efficacement les droits d'accès ?
+
+# Objectifs journaliers
+
+## Jeudi 31/10/2024 :
+
+### SQL - DDL et DML
+
+- [ ] Data Definition Language (DDL)
+
+  - [ ] Savoir créer avec CREATE
+    - [ ] Base de données
+    - [ ] Table
+    - [ ] Index
+  - [ ] Savoir modifier avec ALTER
+    - [ ] Savoir ajouter une colonne
+    - [ ] Savoir modifier une colonne
+    - [ ] Savoir supprimer une colonne
+  - [ ] Savoir utiliser DROP et TRUNCATE
+  - [ ] Savoir définir les contraintes
+    - [ ] PRIMARY KEY
+    - [ ] FOREIGN KEY
+    - [ ] UNIQUE
+    - [ ] NOT NULL
+    - [ ] DEFAULT
+    - [ ] CHECK
+
+- [ ] Data Manipulation Language (DML)
+
+  - [ ] Savoir insérer des données avec INSERT
+    - [ ] Insertion simple
+    - [ ] Insertion multiple
+    - [ ] Insertion avec SELECT
+  - [ ] Savoir mettre à jour avec UPDATE
+    - [ ] Mise à jour simple
+    - [ ] Mise à jour conditionnelle
+  - [ ] Savoir supprimer avec DELETE
+    - [ ] Suppression simple
+    - [ ] Suppression conditionnelle
+    - [ ] Différence avec TRUNCATE
+
+- [ ] Exercices pratiques
+
+  - [ ] Création d'une base de données complète
+  - [ ] Manipulation des données
+
+  # Objectifs journaliers
+
+## Jeudi 31/10/2024 :
+
+### SQL - DDL et DML
+
+- [ ] Data Definition Language (DDL)
+
+  - [ ] Savoir créer avec CREATE
+    - [ ] Base de données
+    - [ ] Table
+    - [ ] Index
+  - [ ] Savoir modifier avec ALTER
+    - [ ] Savoir ajouter une colonne
+    - [ ] Savoir modifier une colonne
+    - [ ] Savoir supprimer une colonne
+  - [ ] Savoir utiliser DROP et TRUNCATE
+  - [ ] Savoir définir les contraintes
+    - [ ] PRIMARY KEY
+    - [ ] FOREIGN KEY
+    - [ ] UNIQUE
+    - [ ] NOT NULL
+    - [ ] DEFAULT
+    - [ ] CHECK
+
+- [ ] Data Manipulation Language (DML)
+
+  - [ ] Savoir insérer des données avec INSERT
+    - [ ] Insertion simple
+    - [ ] Insertion multiple
+    - [ ] Insertion avec SELECT
+  - [ ] Savoir mettre à jour avec UPDATE
+    - [ ] Mise à jour simple
+    - [ ] Mise à jour conditionnelle
+  - [ ] Savoir supprimer avec DELETE
+    - [ ] Suppression simple
+    - [ ] Suppression conditionnelle
+    - [ ] Différence avec TRUNCATE
+
+- [ ] Exercices pratiques
+  - [ ] Création d'une base de données complète
+  - [ ] Manipulation des données
+
+# Objectifs journaliers
+
+## Lundi 04/11/2024 :
+
+### SQL - Data Query Language (DQL)
+
+- [ ] Structure d'une requête SELECT
+
+  - [ ] Savoir écrire une requête SELECT de base
+  - [ ] Savoir sélectionner des colonnes spécifiques
+  - [ ] Savoir utiliser les alias avec AS
+  - [ ] Savoir utiliser la sélection complète (\*)
+
+- [ ] Filtrage des données
+
+  - [ ] Savoir utiliser la clause WHERE
+    - [ ] Savoir utiliser les opérateurs de comparaison
+    - [ ] Savoir utiliser les opérateurs logiques
+    - [ ] Savoir utiliser BETWEEN
+    - [ ] Savoir utiliser IN
+    - [ ] Savoir utiliser LIKE et ses wildcards
+    - [ ] Savoir gérer les NULL
+
+- [ ] Organisation des résultats
+
+  - [ ] Savoir trier avec ORDER BY
+
+    - [ ] ASC / DESC
+    - [ ] Tri multi-colonnes
+
+  - [ ] Savoir utiliser DISTINCT
+  - [ ] Savoir utiliser LIMIT et OFFSET
