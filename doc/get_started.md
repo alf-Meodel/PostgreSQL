@@ -21,6 +21,7 @@
   - [Creation d une Database](#creation-d-une-database)
   - [Creation d'une Table Type ](#creation-d-une-table-type)
   - [Grant / Accorder](#grant)
+  - [Data Query Langage - DQL](#data-query-language-dql)
 
 - [Liste des Dailys](#dailys)
 
@@ -477,7 +478,59 @@ WHERE table_name = 'mockaroo_test' AND grantee = 'franck';
 
 `\i /home/meodel/Téléchargements/mockaroo_test.sql`
 
+# Data Query Language DQL
 
+## 1.Structure d'une requête SELECT
+
+- Pour ce daily je vais créer une table employes que je vais remplir avec un insert aléatoire 
+
+```
+CREATE TABLE employes (
+    id SERIAL PRIMARY KEY,
+    prenom VARCHAR(50),
+    nom VARCHAR(50),
+    departement VARCHAR(50),
+    salaire DECIMAL(10, 2),
+    date_embauche DATE
+);
+
+INSERT INTO employes (prenom, nom, departement, salaire, date_embauche) VALUES
+('Alice', 'Martin', 'Ventes', 50000, '2021-06-15'),
+('Bob', 'Dupont', 'IT', 60000, '2019-03-10'),
+('Claire', 'Leclerc', 'RH', 55000, '2020-10-22'),
+('David', 'Garcia', 'IT', 62000, '2018-04-02'),
+('Emma', 'Bernard', 'Ventes', 52000, '2022-01-18');
+```
+
+#### REQUETE SELECT DE BASE 
+
+```
+SELECT * FROM employes;
+```
+
+#### REQUETE SELECT SPECIFIQUE
+
+- Nous pouvons sélectionner seulement certaines colonnes afin de les afficher en les spécifiant après SELECT :
+
+- **Ne pas oublier la virgule quand plusieurs select**
+
+```
+SELECT prenom, nom FROM employes;
+```
+
+#### Utiliser des Alias 
+
+- Les alias permettent de renommer les colonnes dans le résultat. Ici, nous renommerons prenom en Prénom et nom en Nom :
+
+- Renommer avec des alias est temporaire et ne s’applique qu’à l'affichage du résultat de la requête.
+
+```
+SELECT prenom AS Prénom, nom AS Nom FROM employes;
+```
+
+## 2.Filtrage des Données
+
+#### WHERE ? 
 
 
 <!-- ![postegrean](assets/img/border/cadre_white_b.png) -->
@@ -528,14 +581,14 @@ WHERE table_name = 'mockaroo_test' AND grantee = 'franck';
 
     - [x] Savoir attribuer des privilèges avec GRANT
       - [x] Droits sur les bases de données
-      - [ ] Droits sur les tables
-      - [ ] Droits sur les colonnes
-    - [ ] Gérer la révocation avec REVOKE
-      - [ ] Comment retirer des droits sur une base de données, une table ou une colonne ?
-      - [ ] Quel est l'impact d'une révocation en cascade ?
+      - [x] Droits sur les tables
+      - [x] Droits sur les colonnes
+    - [x] Gérer la révocation avec REVOKE
+      - [x] Comment retirer des droits sur une base de données, une table ou une colonne ?
+      - [x] Quel est l'impact d'une révocation en cascade ?
 
-  - [ ] Les bonnes pratiques de sécurité
-    - [ ] Comment appliquer le principe du moindre privilège dans PostgreSQL ?
+  - [x] Les bonnes pratiques de sécurité
+    - [x] Comment appliquer le principe du moindre privilège dans PostgreSQL ?
     - [ ] Quand utiliser des rôles plutôt que des utilisateurs individuels ?
     - [ ] Comment auditer efficacement les droits d'accès ?
 
@@ -559,77 +612,32 @@ WHERE table_name = 'mockaroo_test' AND grantee = 'franck';
     - [x] Savoir modifier une colonne
     - [x] Savoir supprimer une colonne
   - [x] Savoir utiliser DROP et TRUNCATE
-  - [ ] Savoir définir les contraintes
-    - [ ] PRIMARY KEY
-    - [ ] FOREIGN KEY
-    - [ ] UNIQUE
-    - [ ] NOT NULL
-    - [ ] DEFAULT
-    - [ ] CHECK
+  - [x] Savoir définir les contraintes
+    - [x] PRIMARY KEY
+    - [x] FOREIGN KEY
+    - [x] UNIQUE
+    - [x] NOT NULL
+    - [x] DEFAULT
+    - [x] CHECK
 
 - #### Data Manipulation Language (DML)
 
-  - [ ] Savoir insérer des données avec INSERT
-    - [ ] Insertion simple
-    - [ ] Insertion multiple
-    - [ ] Insertion avec SELECT
-  - [ ] Savoir mettre à jour avec UPDATE
-    - [ ] Mise à jour simple
-    - [ ] Mise à jour conditionnelle
-  - [ ] Savoir supprimer avec DELETE
-    - [ ] Suppression simple
-    - [ ] Suppression conditionnelle
+  - [x] Savoir insérer des données avec INSERT
+    - [x] Insertion simple
+    - [x] Insertion multiple
+    - [x] Insertion avec SELECT
+  - [x] Savoir mettre à jour avec UPDATE
+    - [x] Mise à jour simple
+    - [x] Mise à jour conditionnelle
+  - [x] Savoir supprimer avec DELETE
+    - [x] Suppression simple
+    - [x] Suppression conditionnelle
     - [ ] Différence avec TRUNCATE
 
-- [ ] Exercices pratiques
+- [x] Exercices pratiques
 
-  - [ ] Création d'une base de données complète
-  - [ ] Manipulation des données
-
-## Jeudi 31/10/2024 :
-
-<a href="#sommaire">
-  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
-</a>
-
-### SQL - DDL et DML
-
-- [ ] Data Definition Language (DDL)
-
-  - [ ] Savoir créer avec CREATE
-    - [ ] Base de données
-    - [ ] Table
-    - [ ] Index
-  - [ ] Savoir modifier avec ALTER
-    - [ ] Savoir ajouter une colonne
-    - [ ] Savoir modifier une colonne
-    - [ ] Savoir supprimer une colonne
-  - [ ] Savoir utiliser DROP et TRUNCATE
-  - [ ] Savoir définir les contraintes
-    - [ ] PRIMARY KEY
-    - [ ] FOREIGN KEY
-    - [ ] UNIQUE
-    - [ ] NOT NULL
-    - [ ] DEFAULT
-    - [ ] CHECK
-
-- [ ] Data Manipulation Language (DML)
-
-  - [ ] Savoir insérer des données avec INSERT
-    - [ ] Insertion simple
-    - [ ] Insertion multiple
-    - [ ] Insertion avec SELECT
-  - [ ] Savoir mettre à jour avec UPDATE
-    - [ ] Mise à jour simple
-    - [ ] Mise à jour conditionnelle
-  - [ ] Savoir supprimer avec DELETE
-    - [ ] Suppression simple
-    - [ ] Suppression conditionnelle
-    - [ ] Différence avec TRUNCATE
-
-- [ ] Exercices pratiques
-  - [ ] Création d'une base de données complète
-  - [ ] Manipulation des données
+  - [x] Création d'une base de données complète
+  - [x] Manipulation des données
 
 ## Lundi 04/11/2024 :
 
@@ -639,9 +647,9 @@ WHERE table_name = 'mockaroo_test' AND grantee = 'franck';
 
 ### SQL - Data Query Language (DQL)
 
-- [ ] Structure d'une requête SELECT
+- [x] Structure d'une requête SELECT
 
-  - [ ] Savoir écrire une requête SELECT de base
+  - [x] Savoir écrire une requête SELECT de base
   - [ ] Savoir sélectionner des colonnes spécifiques
   - [ ] Savoir utiliser les alias avec AS
   - [ ] Savoir utiliser la sélection complète (\*)
