@@ -1,8 +1,8 @@
 <h1 style="color: #008080;">GET STARTED </h1>
 
-![postegrean](/assets/structure/test_line_b1.png)
+<!-- ![postegrean](/assets/structure/test_line_b1.png) -->
 
-<!-- ![postegrean](/assets/img/border/cadre_multi_t.png) -->
+![postegrean](/assets/structure/teal_line_t0.png)
 
 ## Sommaire
 
@@ -14,14 +14,14 @@
   - [Supprimer une COLUMN](#supprimer-une-column)
   - [Gerer une table](#gerer-une-table)
 - [Mokaroo](#get-started-mokaroo)
-- [Application des Dailys :](#dailys)
+- [Application des Dailys:](#application-des-dailys)
 
-  - [Drop and Truncate](#utiliser-drop-&-truncate)
-  - [Manipulation des données avec DML](#manipulation-des-données-avec-dml)
+  - [Drop and Truncate](#drop-truncate)
+- [Manipulation des données avec DML](#manipulation-des-données-avec-dml)
   - [Creation d une Database](#creation-d-une-database)
   - [Creation d'une Table Type ](#creation-d-une-table-type)
   - [Grant / Accorder](#grant)
-  - [Data Query Langage - DQL](#data-query-language-dql)
+- [Data Query Langage - DQL](#data-query-language-dql)
 
 - [Liste des Dailys](#dailys)
 
@@ -219,7 +219,7 @@ _Les index optimisent les recherches en accédant rapidement aux données. Dans 
 - Si PostgreSQL utilise l’index, le plan de requête affichera Index Scan (ou un terme similaire), montrant que l'index a été pris en compte pour optimiser la requête.
 
 <a href="#sommaire">
-  <img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
 # Rôles
@@ -263,7 +263,7 @@ Pour une bonne gestion des rôles dans PostgreSQL, il faut mieux créer des **r�
 
 `ALTER TABLE table_test DROP COLUMN age;`
 
-# Utiliser DROP & TRUNCATE
+# Drop Truncate
 
 ## DROP
 
@@ -470,6 +470,8 @@ WHERE table_name = 'mockaroo_test' AND grantee = 'franck';
   <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
+![postegrean](/assets/img/line/pink_point_line_l.png)
+
 # Get started Mokaroo
 
 - Pour installer une base de donnée avec Mockaroo il faut créer notre base de donnée sur le site , choisir SQL en export puis **construire notre BDD** 
@@ -478,7 +480,12 @@ WHERE table_name = 'mockaroo_test' AND grantee = 'franck';
 
 `\i /home/meodel/Téléchargements/mockaroo_test.sql`
 
-# Data Query Language DQL
+![postegrean](/assets/img/line/pink_point_line_l.png)
+
+# Application des Dailys
+
+### Data Query Language DQL
+![postegrean](/assets/img/border/cadre_white_b.png)
 
 ## 1.Structure d'une requête SELECT
 
@@ -527,16 +534,310 @@ SELECT prenom, nom FROM employes;
 ```
 SELECT prenom AS Prénom, nom AS Nom FROM employes;
 ```
+![postegrean](/assets/img/border/cadre_white_b.png)
 
 ## 2.Filtrage des Données
 
-#### WHERE ? 
+#### WHERE ?
+
+- La clause WHERE permet de filtrer les résultats selon des critères spécifiques. Par exemple, pour trouver les employés du département "IT" :
+
+```
+SELECT * FROM employes WHERE departement = 'IT';
+```
+
+```
++----+--------+--------+-------------+----------+---------------+
+| id | prenom | nom    | departement | salaire  | date_embauche |
+|----+--------+--------+-------------+----------+---------------|
+| 2  | Bob    | Dupont | IT          | 60000.00 | 2019-03-10    |
+| 4  | David  | Garcia | IT          | 62000.00 | 2018-04-02    |
++----+--------+--------+-------------+----------+---------------+
+```
+
+#### Opérateurs de Comparaison WHERE 
+
+- Les opérateurs de comparaison **(=, <>, >, <, >=, <=)** permettent de créer des conditions. Par exemple, pour trouver les employés dont le salaire est supérieur à 55000
+
+```
+SELECT * FROM employes WHERE salaire > 55000;
+```
+
+```
++----+--------+--------+-------------+----------+---------------+
+| id | prenom | nom    | departement | salaire  | date_embauche |
+|----+--------+--------+-------------+----------+---------------|
+| 2  | Bob    | Dupont | IT          | 60000.00 | 2019-03-10    |
+| 4  | David  | Garcia | IT          | 62000.00 | 2018-04-02    |
++----+--------+--------+-------------+----------+---------------+
+```
+
+#### Les Opérateurs Logiques
+
+- Les opérateurs logiques **(AND, OR, NOT)** permettent de combiner plusieurs conditions :
+
+- Trouver les employés du département IT avec un salaire supérieur à 60000 :
+
+```
+SELECT * FROM employes WHERE departement = 'IT' AND salaire > 60000;
+```
+
+```
++----+--------+--------+-------------+----------+---------------+
+| id | prenom | nom    | departement | salaire  | date_embauche |
+|----+--------+--------+-------------+----------+---------------|
+| 4  | David  | Garcia | IT          | 62000.00 | 2018-04-02    |
++----+--------+--------+-------------+----------+---------------+
+```
+
+- Trouver les employés dans Ventes ou RH :
+
+```
+SELECT * FROM employes WHERE departement = 'Ventes' OR departement = 'RH';
+```
+
+```
++----+--------+---------+-------------+----------+---------------+
+| id | prenom | nom     | departement | salaire  | date_embauche |
+|----+--------+---------+-------------+----------+---------------|
+| 1  | Alice  | Martin  | Ventes      | 50000.00 | 2021-06-15    |
+| 3  | Claire | Leclerc | RH          | 55000.00 | 2020-10-22    |
+| 5  | Emma   | Bernard | Ventes      | 52000.00 | 2022-01-18    |
++----+--------+---------+-------------+----------+---------------+
+
+```
+
+#### WHERE BETWEN ? 
+
+- BETWEEN permet de filtrer les résultats dans une plage de valeurs:
+
+```
+SELECT * FROM employes WHERE salaire BETWEEN 50000 AND 60000;
+```
+
+```
++----+--------+---------+-------------+----------+---------------+
+| id | prenom | nom     | departement | salaire  | date_embauche |
+|----+--------+---------+-------------+----------+---------------|
+| 1  | Alice  | Martin  | Ventes      | 50000.00 | 2021-06-15    |
+| 2  | Bob    | Dupont  | IT          | 60000.00 | 2019-03-10    |
+| 3  | Claire | Leclerc | RH          | 55000.00 | 2020-10-22    |
+| 5  | Emma   | Bernard | Ventes      | 52000.00 | 2022-01-18    |
++----+--------+---------+-------------+----------+---------------+
+```
+
+#### WHERE IN ? 
+
+- IN permet de filtrer selon une liste de valeurs. Par exemple, pour trouver les employés dans les départements IT et RH :
+
+```
+SELECT * FROM employes WHERE departement IN ('IT', 'RH');
+```
+
+```
++----+--------+---------+-------------+----------+---------------+
+| id | prenom | nom     | departement | salaire  | date_embauche |
+|----+--------+---------+-------------+----------+---------------|
+| 2  | Bob    | Dupont  | IT          | 60000.00 | 2019-03-10    |
+| 3  | Claire | Leclerc | RH          | 55000.00 | 2020-10-22    |
+| 4  | David  | Garcia  | IT          | 62000.00 | 2018-04-02    |
++----+--------+---------+-------------+----------+---------------+
+```
 
 
-<!-- ![postegrean](assets/img/border/cadre_white_b.png) -->
 
-![postegrean](/assets/img/border/cadre_multi_t.png)
+#### Utiliser LIKE et les caractères génériques (wildcards)
 
+- LIKE permet de faire des recherches partielles avec les wildcards **(% pour plusieurs caractères et _ pour un seul caractère).**
+
+- Trouver les employés dont le prénom **commence par A**:
+
+```
+SELECT * FROM employes WHERE prenom LIKE 'A%';
+```
+
+```
++----+--------+--------+-------------+----------+---------------+
+| id | prenom | nom    | departement | salaire  | date_embauche |
+|----+--------+--------+-------------+----------+---------------|
+| 1  | Alice  | Martin | Ventes      | 50000.00 | 2021-06-15    |
++----+--------+--------+-------------+----------+---------------+
+```
+
+- Trouver les employés dont le nom **contient ar** :
+
+```
+SELECT * FROM employes WHERE nom LIKE '%ar%';
+```
+
+```
++----+--------+---------+-------------+----------+---------------+
+| id | prenom | nom     | departement | salaire  | date_embauche |
+|----+--------+---------+-------------+----------+---------------|
+| 1  | Alice  | Martin  | Ventes      | 50000.00 | 2021-06-15    |
+| 4  | David  | Garcia  | IT          | 62000.00 | 2018-04-02    |
+| 5  | Emma   | Bernard | Ventes      | 52000.00 | 2022-01-18    |
++----+--------+---------+-------------+----------+---------------+
+```
+
+
+
+#### Gérer les NULL
+
+- Pour tester si une colonne est NULL, on utilise IS NULL ou IS NOT NULL :
+
+```
+SELECT * FROM employes WHERE salaire IS NOT NULL;
+```
+
+```
++----+--------+---------+-------------+----------+---------------+
+| id | prenom | nom     | departement | salaire  | date_embauche |
+|----+--------+---------+-------------+----------+---------------|
+| 1  | Alice  | Martin  | Ventes      | 50000.00 | 2021-06-15    |
+| 2  | Bob    | Dupont  | IT          | 60000.00 | 2019-03-10    |
+| 3  | Claire | Leclerc | RH          | 55000.00 | 2020-10-22    |
+| 4  | David  | Garcia  | IT          | 62000.00 | 2018-04-02    |
+| 5  | Emma   | Bernard | Ventes      | 52000.00 | 2022-01-18    |
++----+--------+---------+-------------+----------+---------------+
+```
+
+- en revanche comme tout le monde possède un salaire : 
+
+```
+helloworld> SELECT * FROM employes WHERE salaire IS NULL;
+```
+```
++----+--------+-----+-------------+---------+---------------+
+| id | prenom | nom | departement | salaire | date_embauche |
+|----+--------+-----+-------------+---------+---------------|
++----+--------+-----+-------------+---------+---------------+
+
+``` 
+
+
+
+![postegrean](/assets/img/border/cadre_white_b.png)
+
+## 3.Organisation des résultats
+
+### Trier avec ORDER BY
+
+- ORDER BY permet de trier les résultats par une ou plusieurs colonnes
+
+```
+SELECT * FROM employes ORDER BY salaire ASC;
+```
+
+```
++----+--------+---------+-------------+----------+---------------+
+| id | prenom | nom     | departement | salaire  | date_embauche |
+|----+--------+---------+-------------+----------+---------------|
+| 1  | Alice  | Martin  | Ventes      | 50000.00 | 2021-06-15    |
+| 5  | Emma   | Bernard | Ventes      | 52000.00 | 2022-01-18    |
+| 3  | Claire | Leclerc | RH          | 55000.00 | 2020-10-22    |
+| 2  | Bob    | Dupont  | IT          | 60000.00 | 2019-03-10    |
+| 4  | David  | Garcia  | IT          | 62000.00 | 2018-04-02    |
++----+--------+---------+-------------+----------+---------------+
+```
+
+
+Trier par date d'embauche décroissante :
+
+```
+SELECT * FROM employes ORDER BY date_embauche DESC;
+```
+
+```
++----+--------+---------+-------------+----------+---------------+
+| id | prenom | nom     | departement | salaire  | date_embauche |
+|----+--------+---------+-------------+----------+---------------|
+| 5  | Emma   | Bernard | Ventes      | 52000.00 | 2022-01-18    |
+| 1  | Alice  | Martin  | Ventes      | 50000.00 | 2021-06-15    |
+| 3  | Claire | Leclerc | RH          | 55000.00 | 2020-10-22    |
+| 2  | Bob    | Dupont  | IT          | 60000.00 | 2019-03-10    |
+| 4  | David  | Garcia  | IT          | 62000.00 | 2018-04-02    |
++----+--------+---------+-------------+----------+---------------+
+```
+
+
+### Tri multi-colonnes
+
+- On peut trier sur plusieurs colonnes. Par exemple, pour trier d'abord par département puis par salaire :
+
+- ORDER BY commence par trier les résultats selon la colonne departement par ordre alphabétique croissant puis le tri se fait par le le salaire en focntion du montant 
+
+```
+SELECT * FROM employes ORDER BY departement, salaire DESC;
+```
+
+```
++----+--------+---------+-------------+----------+---------------+
+| id | prenom | nom     | departement | salaire  | date_embauche |
+|----+--------+---------+-------------+----------+---------------|
+| 4  | David  | Garcia  | IT          | 62000.00 | 2018-04-02    |
+| 2  | Bob    | Dupont  | IT          | 60000.00 | 2019-03-10    |
+| 3  | Claire | Leclerc | RH          | 55000.00 | 2020-10-22    |
+| 5  | Emma   | Bernard | Ventes      | 52000.00 | 2022-01-18    |
+| 1  | Alice  | Martin  | Ventes      | 50000.00 | 2021-06-15    |
++----+--------+---------+-------------+----------+---------------+
+```
+
+### Utiliser DISTINCT
+
+DISTINCT permet d’éliminer les doublons. Par exemple, pour obtenir les différents départements sans répétition :
+
+```
+SELECT DISTINCT departement FROM employes;
+```
+
+```
++-------------+
+| departement |
+|-------------|
+| Ventes      |
+| RH          |
+| IT          |
+```
+
+### Utiliser LIMIT et OFFSET
+
+- Limiter les résultats à 3 lignes :
+
+```
+SELECT * FROM employes LIMIT 3;
+```
+
+```
++----+--------+---------+-------------+----------+---------------+
+| id | prenom | nom     | departement | salaire  | date_embauche |
+|----+--------+---------+-------------+----------+---------------|
+| 1  | Alice  | Martin  | Ventes      | 50000.00 | 2021-06-15    |
+| 2  | Bob    | Dupont  | IT          | 60000.00 | 2019-03-10    |
+| 3  | Claire | Leclerc | RH          | 55000.00 | 2020-10-22    |
++----+--------+---------+-------------+----------+---------------+
+```
+
+- Déplacer le point de départ des résultats avec OFFSET (par exemple, ignorer les 2 premières lignes) :
+
+```
+SELECT * FROM employes LIMIT 3 OFFSET 2;
+```
+
+```
++----+--------+---------+-------------+----------+---------------+
+| id | prenom | nom     | departement | salaire  | date_embauche |
+|----+--------+---------+-------------+----------+---------------|
+| 3  | Claire | Leclerc | RH          | 55000.00 | 2020-10-22    |
+| 4  | David  | Garcia  | IT          | 62000.00 | 2018-04-02    |
+| 5  | Emma   | Bernard | Ventes      | 52000.00 | 2022-01-18    |
++----+--------+---------+-------------+----------+---------------+
+```
+
+
+
+
+![postegrean](/assets/img/border/cadre_white_b.png)
 # Dailys
 
 <a href="#sommaire">
@@ -650,29 +951,29 @@ SELECT prenom AS Prénom, nom AS Nom FROM employes;
 - [x] Structure d'une requête SELECT
 
   - [x] Savoir écrire une requête SELECT de base
-  - [ ] Savoir sélectionner des colonnes spécifiques
-  - [ ] Savoir utiliser les alias avec AS
-  - [ ] Savoir utiliser la sélection complète (\*)
+  - [x] Savoir sélectionner des colonnes spécifiques
+  - [x] Savoir utiliser les alias avec AS
+  - [x] Savoir utiliser la sélection complète (\*)
 
-- [ ] Filtrage des données
+- [x] Filtrage des données
 
-  - [ ] Savoir utiliser la clause WHERE
-    - [ ] Savoir utiliser les opérateurs de comparaison
-    - [ ] Savoir utiliser les opérateurs logiques
-    - [ ] Savoir utiliser BETWEEN
-    - [ ] Savoir utiliser IN
-    - [ ] Savoir utiliser LIKE et ses wildcards
-    - [ ] Savoir gérer les NULL
+  - [x] Savoir utiliser la clause WHERE
+    - [x] Savoir utiliser les opérateurs de comparaison
+    - [x] Savoir utiliser les opérateurs logiques
+    - [x] Savoir utiliser BETWEEN
+    - [x] Savoir utiliser IN
+    - [x] Savoir utiliser LIKE et ses wildcards
+    - [x] Savoir gérer les NULL
 
-- [ ] Organisation des résultats
+- [x] Organisation des résultats
 
-  - [ ] Savoir trier avec ORDER BY
+  - [x] Savoir trier avec ORDER BY
 
-    - [ ] ASC / DESC
-    - [ ] Tri multi-colonnes
+    - [x] ASC / DESC
+    - [x] Tri multi-colonnes
 
-  - [ ] Savoir utiliser DISTINCT
-  - [ ] Savoir utiliser LIMIT et OFFSET
+  - [x] Savoir utiliser DISTINCT
+  - [x] Savoir utiliser LIMIT et OFFSET
 
 <a href="#sommaire">
   <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
