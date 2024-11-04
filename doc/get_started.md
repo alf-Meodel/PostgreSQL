@@ -1,8 +1,8 @@
 <h1 style="color: #008080;">GET STARTED </h1>
 
-![postegrean](/PostgreSQL/assets/structure/test_line_b1.png)
+![postegrean](/assets/structure/test_line_b1.png)
 
-![postegrean](/PostgreSQL/assets/img/border/cadre_multi_t.png)
+![postegrean](/assets/img/border/cadre_multi_t.png)
 
 ## Sommaire
 
@@ -24,15 +24,15 @@
 
 - [Liste des Dailys](#dailys)
 
-![postegrean](/PostgreSQL/assets/img/border/cadre_white_b.png)
+![postegrean](/assets/img/border/cadre_white_b.png)
 
-![postegrean](/PostgreSQL/assets/img/line/pink_point_line_l.png)
+![postegrean](/assets/img/line/pink_point_line_l.png)
 
 <a href="/PostgreSQL/README.md">
-  <img src="/PostgreSQL/assets/img/button/home_page.png" alt="Lire la suite" style="width: 150px; height: auto;">
+  <img src="/assets/img/button/home_page.png" alt="Lire la suite" style="width: 150px; height: auto;">
 </a>
 
-![postegrean](/PostgreSQL/assets/img/line/pink_point_line_r.png)
+![postegrean](/assets/img/line/pink_point_line_r.png)
 
 ### Tools :
 
@@ -60,7 +60,7 @@ _En PostgreSQL, quand on crée une nouvelle base de données, **on ne peut pas s
 - Puis nous reconnecter en spécifiant la database ici test_DB
 
 <a href="#sommaire">
-  <img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
 ### Les Datases
@@ -86,7 +86,7 @@ _En PostgreSQL, quand on crée une nouvelle base de données, **on ne peut pas s
 `pgcli -U postgres -d nouvelle_database`
 
 <a href="#sommaire">
-  <img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
 <!-- Les tables  -->
@@ -190,7 +190,7 @@ INSERT 0 1
 ` SELECT * FROM toto;`
 
 <a href="#sommaire">
-  <img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
 # Creation d'un index
@@ -228,7 +228,7 @@ _Les index optimisent les recherches en accédant rapidement aux données. Dans 
 Pour une bonne gestion des rôles dans PostgreSQL, il faut mieux créer des **rôles basés sur les responsabilités** (ex. `role_read_only`, `role_data_entry`) puis leur attribuer des permissions adaptées. ensuite nous allons créer des utilisateurs afin de leur assigner uniquement les rôles nécessaires, sans leur donner directement de permissions. Cette approche renforce la sécurité, simplifie la gestion et permet d'ajuster facilement les accès. Séparez les rôles d’administration et d’application pour un meilleur contrôle.
 
 <a href="#sommaire">
-  <img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
 # GERER UNE TABLE
@@ -466,7 +466,7 @@ WHERE table_name = 'mockaroo_test' AND grantee = 'franck';
 
 
 <a href="#sommaire">
-  <img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
 # Get started Mokaroo
@@ -482,18 +482,18 @@ WHERE table_name = 'mockaroo_test' AND grantee = 'franck';
 
 <!-- ![postegrean](assets/img/border/cadre_white_b.png) -->
 
-![postegrean](/PostgreSQL/assets/img/border/cadre_multi_t.png)
+![postegrean](/assets/img/border/cadre_multi_t.png)
 
 # Dailys
 
 <a href="#sommaire">
-<img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+<img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
 ## Mercredi 30/10/2024 :
 
 <a href="#sommaire">
-  <img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
 ### Introduction à PostgreSQL et DCL :
@@ -543,7 +543,7 @@ WHERE table_name = 'mockaroo_test' AND grantee = 'franck';
 ## Jeudi 31/10/2024 :
 
 <a href="#sommaire">
-  <img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
 ### SQL - DDL et DML
@@ -589,7 +589,7 @@ WHERE table_name = 'mockaroo_test' AND grantee = 'franck';
 ## Jeudi 31/10/2024 :
 
 <a href="#sommaire">
-  <img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
 ### SQL - DDL et DML
@@ -634,7 +634,7 @@ WHERE table_name = 'mockaroo_test' AND grantee = 'franck';
 ## Lundi 04/11/2024 :
 
 <a href="#sommaire">
-  <img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
 ### SQL - Data Query Language (DQL)
@@ -667,5 +667,5 @@ WHERE table_name = 'mockaroo_test' AND grantee = 'franck';
   - [ ] Savoir utiliser LIMIT et OFFSET
 
 <a href="#sommaire">
-<img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
 </a>
