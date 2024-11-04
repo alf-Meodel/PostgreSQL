@@ -12,7 +12,12 @@
   - [Gerer une table](#gerer-une-table)
 - [Mokaroo](#get-started-mokaroo)
 - [Dailys](#dailys)
+
   - [Drop and Truncate](#utiliser-drop-&-truncate)
+  - [Manipulation des données avec DML](#manipulation-des-données-avec-dml)
+  - [Creation d'une Table Type ](#creation-d-une-table-type)
+
+  # Creation d'une Table Type
 
 ---
 
@@ -70,110 +75,6 @@ _En PostgreSQL, quand on crée une nouvelle base de données, **on ne peut pas s
 - Puis à partir de la nous allons nous connecter à la database de notre choix
 
 `pgcli -U postgres -d nouvelle_database`
-
-<a href="#sommaire">
-  <img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
-</a>
-
-<!-- Les tables  -->
-<h3 style="color: #AB638C;" id="les_tables">Les Tables</h3>
-
-#### Créer une table
-
-- Voici comment nous créons une table
-
-```
-CREATE TABLE utilisateurs (
-    id SERIAL PRIMARY KEY,
-    nom VARCHAR(50),
-    age INT,
-    email VARCHAR(100)
-);
-```
-
-#### Consulter les tables
-
-- Ensuite nous allons vérifier que la table à été correctement ajouté avec **\ dt**
-
-- ce qui nous donne une résultat dans le style suivant en affichant toutes les tables :
-
-```+--------+--------------+-------+--------+
-| Schema | Name         | Type  | Owner  |
-|--------+--------------+-------+--------|
-| public | nom_table    | table | meodel |
-| public | toto | table | meodel |
-+--------+--------------+-------+--------+
-SELECT 2
-```
-
-#### Modifier une table
-
-###### Ajouter une COLUMN
-
-`ALTER TABLE toto ADD COLUMN description TEXT;`
-
-`ALTER TABLE toto ADD COLUMN adresse VARCHAR(100);`
-
-- Cela nous indique que nous effectuons une action "destructrice / irréversible", que nous validons
-
-```
-You're about to run a destructive command.
-Do you want to proceed? [y/N]:
-```
-
-###### Modifier une COLUMN
-
-- Nous pouvons modifier une colonne existante pour changer son type de données ou ses contraintes _(comme NOT NULL)_.
-
-**Exemple :** Modifier la colonne age pour qu’elle accepte uniquement des valeurs positives (en ajoutant une contrainte CHECK) :
-
-```
-ALTER TABLE toto
-ALTER COLUMN age SET DATA TYPE INT,
-ADD CONSTRAINT positive_age CHECK (age > 0);
-```
-
-###### Supprimer une COLUMN
-
-- Pour supprimer une colonne de la table toto, utilisez DROP COLUMN.
-
-```
-ALTER TABLE toto
-DROP COLUMN description;
-```
-
-#### Consulter la structure d'une table
-
-- Pour ce faire nous allons utiliser **\d toto** afin de consulter la description de la table toto
-
-```
-+-------------+------------------------+----------------------------------------------------+
-| Column      | Type                   | Modifiers                                          |
-|-------------+------------------------+----------------------------------------------------|
-| id          | integer                |  not null default nextval('toto_id_seq'::regclass) |
-| nom         | character varying(50)  |                                                    |
-| age         | integer                |                                                    |
-| email       | character varying(100) |                                                    |
-| description | text                   |                                                    |
-+-------------+------------------------+----------------------------------------------------+
-```
-
-#### Insérer des données
-
-- Pour ajouter manuelement des données **dans la table toto** nous allons faire
-
-```
-helloworld> INSERT INTO toto (nom,age, email, description) VALUES ('Toto', 30, '
- toto@gmail.com', 'Nouveau client');
-INSERT 0 1
-
-```
-
-#### Afficher les données d'une table
-
-- Pour afficher les données d'une table nous allons faire
-
-` SELECT * FROM toto;`
 
 <a href="#sommaire">
   <img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
@@ -250,11 +151,176 @@ Pour une bonne gestion des rôles dans PostgreSQL, il faut mieux créer des **r�
 
 # Utiliser DROP & TRUNCATE
 
-TRUNCATE TABLE table_test;
-
-## Vider la table sans la supprimer
+## DROP
 
 `TRUNCATE TABLE table_test;`
+
+Après ca nous constatons que noter table est vide
+
+helloworld> SELECT \* FROM table_test
++----+--------+-----+-------+---------------+---------+
+| id | prenom | nom | email | date_creation | adresse |
+|----+--------+-----+-------+---------------+---------|
++----+--------+-----+-------+---------------+---------+
+SELECT 0
+Time: 0.005s
+helloworld>
+
+## TRUNCATE
+
+`DROP TABLE table_test`
+
+Supprimer la table table_test complètement (efface toute la structure et les données) :
+
+##### Vider la table sans la supprimer
+
+`TRUNCATE TABLE table_test;`
+
+##### Supprimer la table_test complètement
+
+`DROP TABLE table_test;`
+
+# Creation d une Table Type
+
+```
+helloworld> CREATE TABLE table_test (
+     id SERIAL PRIMARY KEY,
+     prenom VARCHAR(50),
+     nom VARCHAR(50),
+     email VARCHAR(100),
+     age INTEGER,
+     date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+     adresse VARCHAR(100),
+     telephone VARCHAR(15)
+ );
+```
+
+<!-- Les tables  -->
+
+#### EXEMPLE CONCRET
+
+- Voici comment nous créons une table
+
+```
+CREATE TABLE utilisateurs (
+    id SERIAL PRIMARY KEY,
+    nom VARCHAR(50),
+    age INT,
+    email VARCHAR(100)
+);
+```
+
+#### Consulter les tables
+
+- Ensuite nous allons vérifier que la table à été correctement ajouté avec **\ dt**
+
+- ce qui nous donne une résultat dans le style suivant en affichant toutes les tables :
+
+```+--------+--------------+-------+--------+
+| Schema | Name         | Type  | Owner  |
+|--------+--------------+-------+--------|
+| public | nom_table    | table | meodel |
+| public | toto | table | meodel |
++--------+--------------+-------+--------+
+
+```
+
+#### Modifier une table
+
+###### Ajouter une COLUMN
+
+`ALTER TABLE toto ADD COLUMN description TEXT;`
+
+`ALTER TABLE toto ADD COLUMN adresse VARCHAR(100);`
+
+- Cela nous indique que nous effectuons une action "destructrice / irréversible", que nous validons
+
+```
+You're about to run a destructive command.
+Do you want to proceed? [y/N]:
+```
+
+###### Modifier une COLUMN
+
+- Nous pouvons modifier une colonne existante pour changer son type de données ou ses contraintes _(comme NOT NULL)_.
+
+**Exemple :** Modifier la colonne age pour qu’elle accepte uniquement des valeurs positives (en ajoutant une contrainte CHECK) :
+
+```
+ALTER TABLE toto
+ALTER COLUMN age SET DATA TYPE INT,
+ADD CONSTRAINT positive_age CHECK (age > 0);
+```
+
+###### Supprimer une COLUMN
+
+- Pour supprimer une colonne de la table toto, utilisez DROP COLUMN.
+
+```
+ALTER TABLE toto
+DROP COLUMN description;
+```
+
+#### Consulter la structure d'une table
+
+- Pour ce faire nous allons utiliser **\d toto** afin de consulter la description de la table toto
+
+```
++-------------+------------------------+----------------------------------------------------+
+| Column      | Type                   | Modifiers                                          |
+|-------------+------------------------+----------------------------------------------------|
+| id          | integer                |  not null default nextval('toto_id_seq'::regclass) |
+| nom         | character varying(50)  |                                                    |
+| age         | integer                |                                                    |
+| email       | character varying(100) |                                                    |
+| description | text                   |                                                    |
++-------------+------------------------+----------------------------------------------------+
+```
+
+#### Insérer des données
+
+- Pour ajouter manuelement des données **dans la table toto** nous allons faire
+
+```
+helloworld> INSERT INTO toto (nom,age, email, description) VALUES ('Toto', 30, '
+ toto@gmail.com', 'Nouveau client');
+INSERT 0 1
+
+```
+
+#### Afficher les données d'une table
+
+- Pour afficher les données d'une table nous allons faire
+
+` SELECT * FROM toto;`
+
+<a href="#sommaire">
+  <img src="/PostgreSQL/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+</a>
+
+Puis nous allons vérifier la structure de la table
+
+# Manipulation des données avec DML
+
+### Insertion de données
+
+```
+INSERT INTO table_test (prenom, nom, email, age, adresse, telephone)
+VALUES ('Alice', 'Dupont', 'alice@example.com', 25, '123 Rue Principale', '0123456789');
+```
+
+### Insertions multiples
+
+```
+INSERT INTO table_test (prenom, nom, email, age, adresse, telephone)
+VALUES
+('Bob', 'Martin', 'bob@example.com', 30, '456 Rue Secondaire', '0987654321'),
+('Charlie', 'Durand', 'charlie@example.com', 22, '789 Rue Tertiaire', '0192837465');
+```
+
+### Vérification des données insérées
+
+`SELECT * FROM table_test;`
 
 # Get started Mokaroo
 
@@ -299,7 +365,7 @@ TRUNCATE TABLE table_test;
 
     - [x] Savoir construire des requêtes CREATE USER
     - [x] Savoir modifier des utilisateurs avec ALTER USER
-    - [ ] Savoir supprimer des utilisateurs avec DROP USER
+    - [x] Savoir supprimer des utilisateurs avec DROP USER
     - [ ] Savoir utiliser les rôles PostgreSQL
 
   - [ ] Gestion des droits
@@ -323,17 +389,17 @@ TRUNCATE TABLE table_test;
 
 ### SQL - DDL et DML
 
-- [ ] Data Definition Language (DDL)
+- [x] Data Definition Language (DDL)
 
   - [ ] Savoir créer avec CREATE
     - [ ] Base de données
     - [ ] Table
     - [ ] Index
-  - [ ] Savoir modifier avec ALTER
-    - [ ] Savoir ajouter une colonne
-    - [ ] Savoir modifier une colonne
-    - [ ] Savoir supprimer une colonne
-  - [ ] Savoir utiliser DROP et TRUNCATE
+  - [x] Savoir modifier avec ALTER
+    - [x] Savoir ajouter une colonne
+    - [x] Savoir modifier une colonne
+    - [x] Savoir supprimer une colonne
+  - [x] Savoir utiliser DROP et TRUNCATE
   - [ ] Savoir définir les contraintes
     - [ ] PRIMARY KEY
     - [ ] FOREIGN KEY
@@ -342,7 +408,7 @@ TRUNCATE TABLE table_test;
     - [ ] DEFAULT
     - [ ] CHECK
 
-- [ ] Data Manipulation Language (DML)
+- #### Data Manipulation Language (DML)
 
   - [ ] Savoir insérer des données avec INSERT
     - [ ] Insertion simple
