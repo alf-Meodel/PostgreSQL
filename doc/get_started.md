@@ -28,7 +28,7 @@
 
 ![postegrean](/assets/img/line/pink_point_line_l.png)
 
-<a href="/PostgreSQL/README.md">
+<a href="/README.md">
   <img src="/assets/img/button/home_page.png" alt="Lire la suite" style="width: 150px; height: auto;">
 </a>
 
