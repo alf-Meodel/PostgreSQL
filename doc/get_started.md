@@ -17,6 +17,7 @@
 - [Application des Dailys:](#application-des-dailys)
 
   - [Drop and Truncate](#drop-truncate)
+
 - [Manipulation des données avec DML](#manipulation-des-données-avec-dml)
   - [Creation d une Database](#creation-d-une-database)
   - [Creation d'une Table Type ](#creation-d-une-table-type)
@@ -337,13 +338,11 @@ VALUES
 
 `SELECT * FROM table_test;`
 
-
 ## GRANT
 
 ##### VOIR LES PRIVILÈGES
 
 `\dp mockaroo_tes`
-
 
 ##### ACCORDER DES PRIVILEGES (pour Franck):
 
@@ -407,7 +406,7 @@ REVOKE UPDATE (prenom) ON TABLE mockaroo_test FROM franck;
 
 #### VERIFICATIONS :
 
-- Nous allons vérifier l'exitence de l'utilisateur franck  
+- Nous allons vérifier l'exitence de l'utilisateur franck
 
 `SELECT rolname FROM pg_roles WHERE rolname = 'franck';`
 
@@ -420,7 +419,7 @@ REVOKE UPDATE (prenom) ON TABLE mockaroo_test FROM franck;
 SELECT 1
 ```
 
-- Puis nous allons vérifier les privilèges de franck **sur la table mockaroo_test** 
+- Puis nous allons vérifier les privilèges de franck **sur la table mockaroo_test**
 
 ```
 SELECT grantee, privilege_type
@@ -428,7 +427,7 @@ FROM information_schema.role_table_grants
 WHERE table_name = 'mockaroo_test' AND grantee = 'franck';
 ```
 
-- Ce qui nous donnera quelque chose de semblable à 
+- Ce qui nous donnera quelque chose de semblable à
 
 ```
 +---------+----------------+
@@ -439,14 +438,15 @@ WHERE table_name = 'mockaroo_test' AND grantee = 'franck';
 +---------+----------------+
 ```
 
-- Je remarque que L'update prenom n'est pas visible 
+- Je remarque que L'update prenom n'est pas visible
 
 ```
 SELECT grantee, table_name, column_name, privilege_type
 FROM information_schema.column_privileges
 WHERE table_name = 'mockaroo_test' AND grantee = 'franck';
 ```
-- Ce qui nous donne un schema du type : 
+
+- Ce qui nous donne un schema du type :
 
 ```
 +---------+---------------+-------------+----------------+
@@ -464,8 +464,6 @@ WHERE table_name = 'mockaroo_test' AND grantee = 'franck';
 +---------+---------------+-------------+----------------+
 ```
 
-
-
 <a href="#sommaire">
   <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
 </a>
@@ -474,9 +472,9 @@ WHERE table_name = 'mockaroo_test' AND grantee = 'franck';
 
 # Get started Mokaroo
 
-- Pour installer une base de donnée avec Mockaroo il faut créer notre base de donnée sur le site , choisir SQL en export puis **construire notre BDD** 
+- Pour installer une base de donnée avec Mockaroo il faut créer notre base de donnée sur le site , choisir SQL en export puis **construire notre BDD**
 
-- Puis dans **pgcli** nous allons ajouter après **\i** la route correspondant à notre fichier 
+- Puis dans **pgcli** nous allons ajouter après **\i** la route correspondant à notre fichier
 
 `\i /home/meodel/Téléchargements/mockaroo_test.sql`
 
@@ -485,11 +483,12 @@ WHERE table_name = 'mockaroo_test' AND grantee = 'franck';
 # Application des Dailys
 
 ### Data Query Language DQL
+
 ![postegrean](/assets/img/border/cadre_white_b.png)
 
 ## 1.Structure d'une requête SELECT
 
-- Pour ce daily je vais créer une table employes que je vais remplir avec un insert aléatoire 
+- Pour ce daily je vais créer une table employes que je vais remplir avec un insert aléatoire
 
 ```
 CREATE TABLE employes (
@@ -509,7 +508,7 @@ INSERT INTO employes (prenom, nom, departement, salaire, date_embauche) VALUES
 ('Emma', 'Bernard', 'Ventes', 52000, '2022-01-18');
 ```
 
-#### REQUETE SELECT DE BASE 
+#### REQUETE SELECT DE BASE
 
 ```
 SELECT * FROM employes;
@@ -525,7 +524,7 @@ SELECT * FROM employes;
 SELECT prenom, nom FROM employes;
 ```
 
-#### Utiliser des Alias 
+#### Utiliser des Alias
 
 - Les alias permettent de renommer les colonnes dans le résultat. Ici, nous renommerons prenom en Prénom et nom en Nom :
 
@@ -534,6 +533,7 @@ SELECT prenom, nom FROM employes;
 ```
 SELECT prenom AS Prénom, nom AS Nom FROM employes;
 ```
+
 ![postegrean](/assets/img/border/cadre_white_b.png)
 
 ## 2.Filtrage des Données
@@ -555,7 +555,7 @@ SELECT * FROM employes WHERE departement = 'IT';
 +----+--------+--------+-------------+----------+---------------+
 ```
 
-#### Opérateurs de Comparaison WHERE 
+#### Opérateurs de Comparaison WHERE
 
 - Les opérateurs de comparaison **(=, <>, >, <, >=, <=)** permettent de créer des conditions. Par exemple, pour trouver les employés dont le salaire est supérieur à 55000
 
@@ -607,7 +607,7 @@ SELECT * FROM employes WHERE departement = 'Ventes' OR departement = 'RH';
 
 ```
 
-#### WHERE BETWEN ? 
+#### WHERE BETWEN ?
 
 - BETWEEN permet de filtrer les résultats dans une plage de valeurs:
 
@@ -626,7 +626,7 @@ SELECT * FROM employes WHERE salaire BETWEEN 50000 AND 60000;
 +----+--------+---------+-------------+----------+---------------+
 ```
 
-#### WHERE IN ? 
+#### WHERE IN ?
 
 - IN permet de filtrer selon une liste de valeurs. Par exemple, pour trouver les employés dans les départements IT et RH :
 
@@ -644,11 +644,9 @@ SELECT * FROM employes WHERE departement IN ('IT', 'RH');
 +----+--------+---------+-------------+----------+---------------+
 ```
 
-
-
 #### Utiliser LIKE et les caractères génériques (wildcards)
 
-- LIKE permet de faire des recherches partielles avec les wildcards **(% pour plusieurs caractères et _ pour un seul caractère).**
+- LIKE permet de faire des recherches partielles avec les wildcards **(% pour plusieurs caractères et \_ pour un seul caractère).**
 
 - Trouver les employés dont le prénom **commence par A**:
 
@@ -680,8 +678,6 @@ SELECT * FROM employes WHERE nom LIKE '%ar%';
 +----+--------+---------+-------------+----------+---------------+
 ```
 
-
-
 #### Gérer les NULL
 
 - Pour tester si une colonne est NULL, on utilise IS NULL ou IS NOT NULL :
@@ -702,20 +698,19 @@ SELECT * FROM employes WHERE salaire IS NOT NULL;
 +----+--------+---------+-------------+----------+---------------+
 ```
 
-- en revanche comme tout le monde possède un salaire : 
+- en revanche comme tout le monde possède un salaire :
 
 ```
 helloworld> SELECT * FROM employes WHERE salaire IS NULL;
 ```
+
 ```
 +----+--------+-----+-------------+---------+---------------+
 | id | prenom | nom | departement | salaire | date_embauche |
 |----+--------+-----+-------------+---------+---------------|
 +----+--------+-----+-------------+---------+---------------+
 
-``` 
-
-
+```
 
 ![postegrean](/assets/img/border/cadre_white_b.png)
 
@@ -741,7 +736,6 @@ SELECT * FROM employes ORDER BY salaire ASC;
 +----+--------+---------+-------------+----------+---------------+
 ```
 
-
 Trier par date d'embauche décroissante :
 
 ```
@@ -760,12 +754,11 @@ SELECT * FROM employes ORDER BY date_embauche DESC;
 +----+--------+---------+-------------+----------+---------------+
 ```
 
-
 ### Tri multi-colonnes
 
 - On peut trier sur plusieurs colonnes. Par exemple, pour trier d'abord par département puis par salaire :
 
-- ORDER BY commence par trier les résultats selon la colonne departement par ordre alphabétique croissant puis le tri se fait par le le salaire en focntion du montant 
+- ORDER BY commence par trier les résultats selon la colonne departement par ordre alphabétique croissant puis le tri se fait par le le salaire en focntion du montant
 
 ```
 SELECT * FROM employes ORDER BY departement, salaire DESC;
@@ -834,10 +827,22 @@ SELECT * FROM employes LIMIT 3 OFFSET 2;
 +----+--------+---------+-------------+----------+---------------+
 ```
 
-
-
-
 ![postegrean](/assets/img/border/cadre_white_b.png)
+
+---
+
+## Data Definition Language (DDL) (v2)
+
+#### Création d'éléments avec CREATE
+
+- Dans un premier temps nous allons créer notre base de données
+
+```
+CREATE DATABASE entreprise;
+```
+
+---
+
 # Dailys
 
 <a href="#sommaire">
@@ -892,7 +897,6 @@ SELECT * FROM employes LIMIT 3 OFFSET 2;
     - [x] Comment appliquer le principe du moindre privilège dans PostgreSQL ?
     - [ ] Quand utiliser des rôles plutôt que des utilisateurs individuels ?
     - [ ] Comment auditer efficacement les droits d'accès ?
-
 
 ## Jeudi 31/10/2024 :
 

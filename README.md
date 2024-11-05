@@ -37,6 +37,8 @@
 
 <span style="color: #ab638c"></span>
 
+- Dans la même base de donnée fait du r**elationnel et du non relationnel** ( docs... )
+
 - **Conformité SQL** : PostgreSQL suit strictement les normes SQL en garantissant la fiabilité des applications complexes par une structure solide.
 
 - **Transactions et ACID** : PostgreSQL applique les principes **ACID** pour des opérations de haute intégrité :
