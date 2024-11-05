@@ -6,25 +6,20 @@
 
 ## Sommaire
 
-- [First Steps](#first-steps)
-- [Les Databases](#les_databases)
-- [Généralités sur les Tables](#les_tables)
-  - [Ajouter une COLUMN](#ajouter-une-column)
-  - [Modifier une COLUMN](#modifier-une-column)
-  - [Supprimer une COLUMN](#supprimer-une-column)
-  - [Gerer une table](#gerer-une-table)
+- [Premiers pas](#first-steps)
+
 - [Mokaroo](#get-started-mokaroo)
 - [Application des Dailys:](#application-des-dailys)
 
-  - [Drop and Truncate](#drop-truncate)
+ 
+  - [1.Data Control Language DCL](#data-control-language-dcl)
+  - [2.Data Definition Language DDL](#data-definition-language-ddl)
 
-- [2.Data Definition Language DDL](#data-definition-language-ddl)
-
-- [3.Manipulation des données avec DML](#manipulation-des-données-avec-dml)
-  - [Creation d une Database](#creation-d-une-database)
-  - [Creation d'une Table Type ](#creation-d-une-table-type)
-  - [Grant / Accorder](#grant)
-- [Data Query Langage - DQL](#data-query-language-dql)
+  - [3.Manipulation des données avec DML](#manipulation-des-données-avec-dml)
+    - [Creation d une Database](#creation-d-une-database)
+    - [Creation d'une Table Type ](#creation-d-une-table-type)
+    - [Grant / Accorder](#grant)
+  - [4.Data Query Langage - DQL](#data-query-language-dql)
 
 - [Liste des Dailys](#dailys)
 
@@ -67,264 +62,258 @@ _En PostgreSQL, quand on crée une nouvelle base de données, **on ne peut pas s
   <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
-### Les Datases
+![postegrean](/assets/img/line/pink_point_line_l.png)
+![postegrean](/assets/img/line/green_point_line_r.png)
 
-- à partir de pgcli nous pouvons afficher les databases en effectuant la commande `\l`
-- ce qui va afficher les databases présentes dans notre système sous la forme suivante
+# Data Control Language DCL
 
-```
-+------------------+----------+----------+-----------------------+-----------------------+
-| Name             | Owner    | Encoding | Collate               | Ctype                 |
-|------------------+----------+----------+-----------------------+-----------------------|
-| postgres         | postgres | UTF8     | en_US.UTF-8           | en_US.UTF-8           |
-| mon_database     | meodel   | UTF8     | en_US.UTF-8           | en_US.UTF-8           |
-| template0        | postgres | UTF8     | en_US.UTF-8           | en_US.UTF-8           |
-| template1        | postgres | UTF8     | en_US.UTF-8           | en_US.UTF-8           |
-+------------------+----------+----------+-----------------------+-----------------------+
-```
+- Le DCL est utilisé pour gérer les droits d'accès aux objets dans la base de données.
 
-- Si nous désirons changer de database nous allons devoir quitter **pgcli** avec **l'antislash q** `\q`
+## Gestion des utilisateurs
 
-- Puis à partir de la nous allons nous connecter à la database de notre choix
-
-`pgcli -U postgres -d nouvelle_database`
-
-<a href="#sommaire">
-  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
-</a>
-
-<!-- Les tables  -->
-<h3 style="color: #AB638C;" id="les_tables">Généralités sur les Tables</h3>
-
-#### Créer une table
-
-- Voici comment nous créons une table
+#### Créer avec CREATE USER
 
 ```
-CREATE TABLE utilisateurs (
-    id SERIAL PRIMARY KEY,
-    nom VARCHAR(50),
-    age INT,
-    email VARCHAR(100)
-);
+CREATE USER alice WITH PASSWORD 'mot_de_passe';
 ```
 
-#### Consulter les tables
-
-- Ensuite nous allons vérifier que la table à été correctement ajouté avec **\ dt**
-
-- ce qui nous donne une résultat dans le style suivant en affichant toutes les tables :
-
-```+--------+--------------+-------+--------+
-| Schema | Name         | Type  | Owner  |
-|--------+--------------+-------+--------|
-| public | nom_table    | table | meodel |
-| public | toto | table | meodel |
-+--------+--------------+-------+--------+
-SELECT 2
-```
-
-#### Modifier une table
-
-###### Ajouter une COLUMN
-
-`ALTER TABLE toto ADD COLUMN description TEXT;`
-
-`ALTER TABLE toto ADD COLUMN adresse VARCHAR(100);`
-
-- Cela nous indique que nous effectuons une action "destructrice / irréversible", que nous validons
+#### Modifier avec ALTER USER
 
 ```
-You're about to run a destructive command.
-Do you want to proceed? [y/N]:
+ALTER USER alice WITH PASSWORD 'nouveau_mot_de_passe';
 ```
 
-###### Modifier une COLUMN
-
-- Nous pouvons modifier une colonne existante pour changer son type de données ou ses contraintes _(comme NOT NULL)_.
-
-**Exemple :** Modifier la colonne age pour qu’elle accepte uniquement des valeurs positives (en ajoutant une contrainte CHECK) :
+#### Supprimer avec DROP USER
 
 ```
-ALTER TABLE toto
-ALTER COLUMN age SET DATA TYPE INT,
-ADD CONSTRAINT positive_age CHECK (age > 0);
+DROP USER alice;
 ```
 
-###### Supprimer une COLUMN
+## Rôles et Utilisateurs dans PostgreSQL
 
-- Pour supprimer une colonne de la table toto, utilisez DROP COLUMN.
+### Commandes 
 
-```
-ALTER TABLE toto
-DROP COLUMN description;
-```
+- Pour voir les rôles il faut passer par la commande 
+`\du`
 
-#### Consulter la structure d'une table
-
-- Pour ce faire nous allons utiliser **\d toto** afin de consulter la description de la table toto
+-Voir les privilèges attribués à un rôle spécifique (par exemple, moderateur) :
 
 ```
-+-------------+------------------------+----------------------------------------------------+
-| Column      | Type                   | Modifiers                                          |
-|-------------+------------------------+----------------------------------------------------|
-| id          | integer                |  not null default nextval('toto_id_seq'::regclass) |
-| nom         | character varying(50)  |                                                    |
-| age         | integer                |                                                    |
-| email       | character varying(100) |                                                    |
-| description | text                   |                                                    |
-+-------------+------------------------+----------------------------------------------------+
+SELECT grantee, privilege_type 
+FROM information_schema.role_table_grants 
+WHERE grantee = 'moderateur';
 ```
 
-#### Insérer des données
+### Définition
 
-- Pour ajouter manuelement des données **dans la table toto** nous allons faire
+On peut voir un rôle soit comme un titre
+(comme "modérateur" ou "administrateur")
+qui donne un ensemble de privilèges,
+soit comme un utilisateur spécifique pouvant
+se connecter et recevoir des privilèges directement.
 
-```
-helloworld> INSERT INTO toto (nom,age, email, description) VALUES ('Toto', 30, '
- toto@gmail.com', 'Nouveau client');
-INSERT 0 1
 
-```
 
-#### Afficher les données d'une table
+#### Utilisateur :
+Un rôle qui peut se connecter à la base de données. Quand on crée un utilisateur, **on crée un rôle avec l’option LOGIN.**
 
-- Pour afficher les données d'une table nous allons faire
+#### Rôle (Role) :
+**Un rôle sans l’option LOGIN** agit comme un groupe qui peut être attribué à d’autres utilisateurs.
 
-` SELECT * FROM toto;`
+- Les rôles dans PostgreSQL **sont des entités qui peuvent recevoir des privilèges**
+- Les rôles dans PostgreSQL **peuvent agir comme des utilisateurs, des groupes, ou les deux.**
+- Le concept de rôle dans PostgreSQL est plus flexible que simplement un utilisateur ou un groupe.
 
-<a href="#sommaire">
-  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
-</a>
+### MILLES NUANCES DE GRANT
+## Exemple Pratique 1 :
 
-# Creation d'un index
+#### Étape 1 : Préparation - Créer la base de données et se connecter
 
-#### Tips
-
-_Quand nous créons une clé pirmaire un index est automatiquement créé_
-
-_Les index optimisent les recherches en accédant rapidement aux données. Dans notre exemple, PostgreSQL utilise automatiquement idx_email pour accélérer les requêtes sur email dans la table toto._
-
-- Création de l'index : Lorsqu’on crée un index (par exemple, idx_email sur la colonne email), PostgreSQL crée une structure de données interne qui rend les recherches sur cette colonne beaucoup plus rapides.
-
-`CREATE INDEX idx_email ON toto (email);`
-
-- Utilisation automatique de l'index : Lorsque vous exécutez une requête qui implique une condition sur la colonne email, PostgreSQL examine si l'index idx_email peut optimiser cette requête. Si c'est le cas, PostgreSQL utilise automatiquement cet index pour accélérer la recherche.
-
-`SELECT * FROM toto WHERE email = 'toto@gmail.com';`
-
-- Dans ce cas, PostgreSQL voit que email est indexé avec idx_email. Si l'index est pertinent pour cette recherche, il est automatiquement utilisé pour trouver les lignes correspondantes plus rapidement.
-
-- Plan d’exécution (pour vérifier) : Si vous souhaitez voir comment PostgreSQL exécute la requête, utilisez EXPLAIN pour obtenir un aperçu du plan d’exécution. Cela vous indiquera si PostgreSQL utilise l'index ou non :
-
-`EXPLAIN SELECT * FROM toto WHERE email = 'toto@gmail.com';`
-
-- Si PostgreSQL utilise l’index, le plan de requête affichera Index Scan (ou un terme similaire), montrant que l'index a été pris en compte pour optimiser la requête.
-
-<a href="#sommaire">
-  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
-</a>
-
-# Rôles
-
-#### Bonnes pratiques
-
-Pour une bonne gestion des rôles dans PostgreSQL, il faut mieux créer des **rôles basés sur les responsabilités** (ex. `role_read_only`, `role_data_entry`) puis leur attribuer des permissions adaptées. ensuite nous allons créer des utilisateurs afin de leur assigner uniquement les rôles nécessaires, sans leur donner directement de permissions. Cette approche renforce la sécurité, simplifie la gestion et permet d'ajuster facilement les accès. Séparez les rôles d’administration et d’application pour un meilleur contrôle.
-
-<a href="#sommaire">
-  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
-</a>
-
-# GERER UNE TABLE
-
-### Creation d'une table table_test
+- Créer une base de données appelée meodel_design :
 
 ```
-    CREATE TABLE table_test (
-    id SERIAL PRIMARY KEY,
-    prenom VARCHAR(50),
-    nom VARCHAR(50),
-    email VARCHAR(100),
-    age INTEGER,
-    date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    );
+CREATE DATABASE meodel_design;
 ```
 
-### AJOUTER UNE COLONNE DANS table_test
-
-`ALTER TABLE table_test ADD COLUMN adresse VARCHAR(100); `
-
-### MODIFIER LA LONGUEUR DE la COLUMN EMAIL
-
-`ALTER TABLE table_test ALTER COLUMN email TYPE VARCHAR(150);`
-
-### Ajouter une colonne telephone avec une contrainte NOT NULL
-
-`ALTER TABLE table_test ADD COLUMN telephone VARCHAR(15) NOT NULL;`
-
-### Supprimer la colonne age
-
-`ALTER TABLE table_test DROP COLUMN age;`
-
-# Drop Truncate
-
-## DROP
-
-`TRUNCATE TABLE table_test;`
-
-Après ca nous constatons que noter table est vide
+- Puis nous allons nous deconnecter de **pgcli** afin de nous reconnecter en utilisant cette fois notre database meodel_design fraichement créé 
 
 ```
-helloworld> SELECT \* FROM table_test
-+----+--------+-----+-------+---------------+---------+
-| id | prenom | nom | email | date_creation | adresse |
-|----+--------+-----+-------+---------------+---------|
-+----+--------+-----+-------+---------------+---------+
-SELECT 0
-Time: 0.005s
-helloworld>
+helloworld> \q
+Goodbye!
+> pgcli -U meodel -d meodel_design
 ```
 
-## TRUNCATE
+#### Étape 2 : Gestion des utilisateurs
 
-`DROP TABLE table_test`
+##### Créer des utilisateurs avec CREATE USER
 
-Supprimer la table table_test complètement (efface toute la structure et les données) :
-
-##### Vider la table sans la supprimer
-
-`TRUNCATE TABLE table_test;`
-
-##### Supprimer la table_test complètement
-
-`DROP TABLE table_test;`
-
-# Creation d une Database
-
-`CREATE DATABASE gestion_entreprise;`
-
-# Creation d une Table Type
+- Nous allons créer trois utilisateurs : 
+- franck, toto, et tata, avec des mots de passe.
 
 ```
-helloworld> CREATE TABLE table_test (
-     id SERIAL PRIMARY KEY,
-     prenom VARCHAR(50),
-     nom VARCHAR(50),
-     email VARCHAR(100),
-     age INTEGER,
-     date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-     adresse VARCHAR(100),
-     telephone VARCHAR(15)
- );
+CREATE USER franck WITH PASSWORD 'mot_de_passe_franck';
+CREATE USER toto WITH PASSWORD 'mot_de_passe_toto';
+CREATE USER tata WITH PASSWORD 'mot_de_passe_tata';
 ```
 
-Puis nous allons vérifier la structure de la table
+- Ces utilisateurs sont créés, mais ils n’ont pour l’instant aucun droit spécifique sur la base de données.
+
+#### Modifier les utilisateurs avec ALTER USER
+
+- Changeons le mot de passe de franck pour illustrer l'utilisation de ALTER USER.
+
+```
+ALTER USER franck WITH PASSWORD 'nouveau_mot_de_passe';
+```
+
+#### Supprimer des utilisateurs avec DROP USER
+
+- Pour supprimer un utilisateur, on utilise DROP USER. Par exemple, pour supprimer tata 
+- (notons que cela ne fonctionnera que si l'utilisateur n'a aucun droit ou objet dépendant)
+
+```
+DROP USER tata;
+```
+
+#### Étape 3 : Utilisation des rôles PostgreSQL
+
+##### Créer un rôle
+
+- Créons un rôle appelé moderateur qui aura des privilèges spécifiques sur certaines tables. 
+- Ce rôle agira comme un groupe pour centraliser les privilèges.
+
+```
+CREATE ROLE moderateur;
+```
+
+
+
+## Exemple Pratique 2 : Création de Rôles et Gestion des Privilèges
+
+### 1. Créer un rôle sans connexion
+
+- Pour cet exemple, disons que nous avons un rôle général, moderateur, qui a des droits sur plusieurs tables, mais ce rôle ne peut pas se connecter directement.
+
+```
+CREATE ROLE moderateur;
+```
+
+- Ce rôle peut ensuite recevoir des privilèges sur des objets de la base de données (comme des tables).
+
+### 2. Créer un utilisateur avec l’option LOGIN
+
+- Pour créer un utilisateur qui pourra se connecter à la base de données,
+- on doit ajouter **WITH LOGIN**. Par exemple, pour créer un utilisateur allen avec un mot de passe :
+
+```
+CREATE USER allen WITH PASSWORD '1234';
+```
+
+- Cet utilisateur allen peut maintenant se connecter à la base de données, mais il n’a pour l’instant **aucun privilège particulier.**
+
+### 3. Attribuer un rôle à un utilisateur (ou à d’autres rôles)
+
+- Pour donner à allen les privilèges associés au rôle moderateur, 
+- **on utilise GRANT**. Cela signifie qu’ **allen héritera des privilèges de moderateur** :
+
+```
+GRANT moderateur TO allen;
+```
+
+- Ainsi, allen reçoit les privilèges du rôle moderateur.
+- Par exemple, **si le rôle moderateur a des droits de lecture sur une table, allen héritera automatiquement de ces droits.**
+
+### 4. Attribuer des privilèges au rôle moderateur
+
+- Maintenant, attribuons des privilèges spécifiques au rôle moderateur,
+- plutôt qu’à chaque utilisateur individuellement. 
+- Par exemple, **si nous avons une table employes et nous voulons que tous les modérateurs puissent lire les données :**
+
+-----
+
+- Avec cette commande, tous les utilisateurs ayant le rôle moderateur pourront lire la table employes.
+
+```
+GRANT SELECT ON TABLE employes TO moderateur;
+```
+---
+### 5. Vérifier les Rôles et les Privilèges
+
+#### Vérifier les rôles :
+- Pour voir les rôles et utilisateurs existants, vous pouvez utiliser cette commande dans pgcli :
+- Cela liste tous les rôles, avec les permissions associées (par exemple, si le rôle a LOGIN).
+
+`\du`
+
+### 6. Voir les privilèges d’un rôle spécifique : 
+
+- Pour voir les privilèges du rôle moderateur sur les objets de la base de données, utilisez cette commande SQL :
+
+- Cela nous montre les privilèges associés à moderateur sur chaque table.
+```
+SELECT grantee, privilege_type
+FROM information_schema.role_table_grants
+WHERE grantee = 'moderateur';
+```
+ GRANT **SELECT**
+
+```
+helloworld> GRANT SELECT ON TABLE employes TO moderateur;
+helloworld> SELECT grantee, privilege_type
+ FROM information_schema.role_table_grants
+ WHERE grantee = 'moderateur';
+```
+
+```
++------------+----------------+
+| grantee    | privilege_type |
+|------------+----------------|
+| moderateur | SELECT         |
++------------+----------------+
+```
+
+### 7. Gestion des Privilèges avec REVOKE
+
+- Supposons que nous souhaitons retirer le rôle moderateur d'allen :
+
+- ici Allen est moderateur
+```
+\du
+| allen | False | True | False | False | True | -1 | <null> | ['moderateur']
+```
+- Puis nous allons revoquer le role de moderateur 
+
+```
+REVOKE moderateur FROM allen;
+REVOKE ROLE
+```
+- Ainsi nous pouvons constater que moderateur à disparu 
+
+```
+|allen|False|True|False|False|True|-1|<null>|[]
+```
+
+- allen ne pourra plus accéder aux privilèges liés au rôle moderateur.
+
+
+
+
+---
+
+## Gestion des droits
+#### Attribuer des privilèges avec GRANT
+
+
+
+
+
 
 <a href="#sommaire">
   <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
 ![postegrean](/assets/img/line/pink_point_line_l.png)
+![postegrean](/assets/img/line/green_point_line_r.png)
 
 # Data Definition Language DDL
 
@@ -481,10 +470,11 @@ ADD CONSTRAINT check_salaire CHECK (salaire > 0);
 ```
 
 <a href="#sommaire">
-  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+  <img src="/assets/img/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
 ![postegrean](/assets/img/line/pink_point_line_l.png)
+![postegrean](/assets/img/line/green_point_line_r.png)
 
 # Manipulation des données avec DML
 
