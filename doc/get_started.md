@@ -18,7 +18,9 @@
 
   - [Drop and Truncate](#drop-truncate)
 
-- [Manipulation des données avec DML](#manipulation-des-données-avec-dml)
+- [2.Data Definition Language DDL](#data-definition-language-ddl)
+
+- [3.Manipulation des données avec DML](#manipulation-des-données-avec-dml)
   - [Creation d une Database](#creation-d-une-database)
   - [Creation d'une Table Type ](#creation-d-une-table-type)
   - [Grant / Accorder](#grant)
@@ -272,6 +274,7 @@ Pour une bonne gestion des rôles dans PostgreSQL, il faut mieux créer des **r�
 
 Après ca nous constatons que noter table est vide
 
+```
 helloworld> SELECT \* FROM table_test
 +----+--------+-----+-------+---------------+---------+
 | id | prenom | nom | email | date_creation | adresse |
@@ -280,6 +283,7 @@ helloworld> SELECT \* FROM table_test
 SELECT 0
 Time: 0.005s
 helloworld>
+```
 
 ## TRUNCATE
 
@@ -315,6 +319,172 @@ helloworld> CREATE TABLE table_test (
 ```
 
 Puis nous allons vérifier la structure de la table
+
+<a href="#sommaire">
+  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+</a>
+
+![postegrean](/assets/img/line/pink_point_line_l.png)
+
+# Data Definition Language DDL
+
+- Pour commencer, créons une base de données nommée entreprise :
+
+### Créer une base de données
+
+```
+CREATE DATABASE entreprise;
+```
+
+- Nous allons nous connecter à la db avec
+
+```
+psql -U votre_utilisateur -d entreprise
+```
+
+### Créer une base de données
+
+- Nous allons créer une table employes avec les colonnes suivantes : id, prenom, nom, departement, salaire, et date_embauche.
+
+```
+CREATE TABLE employes (
+    id SERIAL PRIMARY KEY,
+    prenom VARCHAR(50),
+    nom VARCHAR(50),
+    departement VARCHAR(50),
+    salaire DECIMAL(10, 2),
+    date_embauche DATE
+);
+```
+
+## Créer un index
+
+- Pour optimiser les recherches sur la colonne departement, nous pouvons créer un index :
+
+```
+CREATE INDEX idx_departement ON employes(departement);
+```
+
+## Modification d'une table avec ALTER
+
+#### Ajouter une colonne
+
+- Ajoutons une colonne email à la table employes :
+
+```
+ALTER TABLE employes
+ADD COLUMN email VARCHAR(100);
+```
+
+## Modifier une colonne
+
+- Modifions la longueur de la colonne departement pour autoriser 100 caractères :
+
+```
+ALTER TABLE employes
+ALTER COLUMN departement TYPE VARCHAR(100);
+```
+
+## Supprimer une colonne
+
+- Supposons que nous n'avons plus besoin de la colonne email. Voici comment la supprimer :
+
+```
+ALTER TABLE employes
+DROP COLUMN email;
+```
+
+## Supprimer et tronquer des tables
+
+#### Utiliser DROP pour supprimer une table
+
+- La commande DROP supprime une table et toutes les données qu'elle contient de façon définitive :
+
+```
+DROP TABLE employes;
+```
+
+#### Utiliser TRUNCATE pour vider une table
+
+- TRUNCATE supprime toutes les lignes d'une table, mais conserve la structure de la table :
+
+```
+TRUNCATE TABLE employes;
+```
+
+## Définir les contraintes
+
+Les contraintes définissent des règles que les données doivent respecter.
+
+### PRIMARY KEY
+
+- La clé primaire identifie de manière unique chaque ligne d'une table. Dans notre exemple, la colonne id est définie comme clé primaire.
+
+```
+CREATE TABLE employes (
+    id SERIAL PRIMARY KEY,
+    prenom VARCHAR(50),
+    nom VARCHAR(50),
+    departement VARCHAR(50),
+    salaire DECIMAL(10, 2),
+    date_embauche DATE
+);
+```
+
+### FOREIGN KEY
+
+Créons une table departements et définissons une contrainte de clé étrangère pour lier les employés aux départements.
+
+```
+CREATE TABLE departements (
+    id SERIAL PRIMARY KEY,
+    nom VARCHAR(50) UNIQUE
+);
+
+ALTER TABLE employes
+ADD COLUMN departement_id INT,
+ADD CONSTRAINT fk_departement FOREIGN KEY (departement_id) REFERENCES departements(id);
+```
+
+### UNIQUE
+
+- La contrainte UNIQUE empêche les valeurs dupliquées dans une colonne spécifique. Par exemple :
+
+```
+ALTER TABLE employes
+ADD CONSTRAINT unique_email UNIQUE (email);
+```
+
+### NOT NULL
+
+```
+ALTER TABLE employes
+ALTER COLUMN nom SET NOT NULL;
+```
+
+### DEFAULT
+
+- DEFAULT définit une valeur par défaut pour une colonne lorsque rien n'est spécifié :
+
+```
+ALTER TABLE employes
+ALTER COLUMN salaire SET DEFAULT 30000;
+```
+
+### CHECK
+
+- CHECK impose une condition que chaque ligne doit respecter. Par exemple, pour s’assurer que le salaire est toujours positif :
+
+```
+ALTER TABLE employes
+ADD CONSTRAINT check_salaire CHECK (salaire > 0);
+```
+
+<a href="#sommaire">
+  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+</a>
+
+![postegrean](/assets/img/line/pink_point_line_l.png)
 
 # Manipulation des données avec DML
 
@@ -402,6 +572,7 @@ REVOKE SELECT ON TABLE mockaroo_test FROM franck;
 
 ```
 REVOKE UPDATE (prenom) ON TABLE mockaroo_test FROM franck;
+
 ```
 
 #### VERIFICATIONS :
@@ -417,6 +588,7 @@ REVOKE UPDATE (prenom) ON TABLE mockaroo_test FROM franck;
 | franck  |
 +---------+
 SELECT 1
+
 ```
 
 - Puis nous allons vérifier les privilèges de franck **sur la table mockaroo_test**
