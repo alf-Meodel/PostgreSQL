@@ -8,18 +8,34 @@
 
 - [Premiers pas](#first-steps)
 
-- [Mokaroo](#get-started-mokaroo)
-- [Application des Dailys:](#application-des-dailys)
+- [1.Data Control Language DCL](#data-control-language-dcl)
 
- 
-  - [1.Data Control Language DCL](#data-control-language-dcl)
-  - [2.Data Definition Language DDL](#data-definition-language-ddl)
+  - [CREATE ALTER DROP USER](#create-alter-drop-user)
+  - [Exemple Pratique CREATE](#exemple-pratique-create)
+  - [GRANT REVOQUE EXEMPLE](#grant-revoque-exemple)
 
-  - [3.Manipulation des données avec DML](#manipulation-des-données-avec-dml)
-    - [Creation d une Database](#creation-d-une-database)
-    - [Creation d'une Table Type ](#creation-d-une-table-type)
-    - [Grant / Accorder](#grant)
-  - [4.Data Query Langage - DQL](#data-query-language-dql)
+- [2.Data Definition Language DDL](#data-definition-language-ddl)
+
+  - [Créer un index](#créer-un-index)
+
+  - [Contraintes PK FK unique not null default check](#contraintes-pk-fk-unique-not-null-default-check)
+
+- [3.Manipulation des données avec DML](#manipulation-des-données-avec-dml)
+  - [INSERT INTO](#insert-into)
+  - [Grant / Accorder exemple](#grant)
+- [4.Data Query Langage - DQL](#data-query-language-dql)
+
+  - [Alias as PRENOM](#alias-as-prenom)
+  - [WHERE ?](#where)
+  - [Les Opérateurs Logiques AND OR NOT](#les-opérateurs-logiques-and-or-not)
+  - [WHERE BETWEEEN](#where-between)
+  - [WHERE IN](#where-in)
+  - [LIKE et les caractères génériques wildcards](#like-et-les-caractères-génériques-wildcards)
+
+  - [Gérer les NULL](#gérer-les-null)
+  - [Trier avec ORDER BY](#trier-avec-order-by)
+  - [Utiliser DISTINCT](#utiliser-distinct)
+  - [Utiliser LIMIT et OFFSET](#utiliser-limit-et-offset)
 
 - [Liste des Dailys](#dailys)
 
@@ -69,9 +85,9 @@ _En PostgreSQL, quand on crée une nouvelle base de données, **on ne peut pas s
 
 - Le DCL est utilisé pour gérer les droits d'accès aux objets dans la base de données.
 
-## Gestion des utilisateurs
+## CREATE ALTER DROP USER
 
-#### Créer avec CREATE USER
+#### CREATE USER
 
 ```
 CREATE USER alice WITH PASSWORD 'mot_de_passe';
@@ -91,16 +107,16 @@ DROP USER alice;
 
 ## Rôles et Utilisateurs dans PostgreSQL
 
-### Commandes 
+### Commandes
 
-- Pour voir les rôles il faut passer par la commande 
-`\du`
+- Pour voir les rôles il faut passer par la commande
+  `\du`
 
 -Voir les privilèges attribués à un rôle spécifique (par exemple, moderateur) :
 
 ```
-SELECT grantee, privilege_type 
-FROM information_schema.role_table_grants 
+SELECT grantee, privilege_type
+FROM information_schema.role_table_grants
 WHERE grantee = 'moderateur';
 ```
 
@@ -112,9 +128,8 @@ qui donne un ensemble de privilèges,
 soit comme un utilisateur spécifique pouvant
 se connecter et recevoir des privilèges directement.
 
-
-
 #### Utilisateur :
+
 Un rôle qui peut se connecter à la base de données. Quand on crée un utilisateur, **on crée un rôle avec l’option LOGIN.**
 
 #### Rôle (Role) :
@@ -125,7 +140,8 @@ Un rôle qui peut se connecter à la base de données. Quand on crée un utilisa
 - Le concept de rôle dans PostgreSQL est plus flexible que simplement un utilisateur ou un groupe.
 
 ### MILLES NUANCES DE GRANT
-## Exemple Pratique 1 :
+
+## Exemple Pratique CREATE
 
 #### Étape 1 : Préparation - Créer la base de données et se connecter
 
@@ -135,7 +151,7 @@ Un rôle qui peut se connecter à la base de données. Quand on crée un utilisa
 CREATE DATABASE meodel_design;
 ```
 
-- Puis nous allons nous deconnecter de **pgcli** afin de nous reconnecter en utilisant cette fois notre database meodel_design fraichement créé 
+- Puis nous allons nous deconnecter de **pgcli** afin de nous reconnecter en utilisant cette fois notre database meodel_design fraichement créé
 
 ```
 helloworld> \q
@@ -147,7 +163,7 @@ Goodbye!
 
 ##### Créer des utilisateurs avec CREATE USER
 
-- Nous allons créer trois utilisateurs : 
+- Nous allons créer trois utilisateurs :
 - franck, toto, et tata, avec des mots de passe.
 
 ```
@@ -168,7 +184,7 @@ ALTER USER franck WITH PASSWORD 'nouveau_mot_de_passe';
 
 #### Supprimer des utilisateurs avec DROP USER
 
-- Pour supprimer un utilisateur, on utilise DROP USER. Par exemple, pour supprimer tata 
+- Pour supprimer un utilisateur, on utilise DROP USER. Par exemple, pour supprimer tata
 - (notons que cela ne fonctionnera que si l'utilisateur n'a aucun droit ou objet dépendant)
 
 ```
@@ -179,16 +195,14 @@ DROP USER tata;
 
 ##### Créer un rôle
 
-- Créons un rôle appelé moderateur qui aura des privilèges spécifiques sur certaines tables. 
+- Créons un rôle appelé moderateur qui aura des privilèges spécifiques sur certaines tables.
 - Ce rôle agira comme un groupe pour centraliser les privilèges.
 
 ```
 CREATE ROLE moderateur;
 ```
 
-
-
-## Exemple Pratique 2 : Création de Rôles et Gestion des Privilèges
+## GRANT REVOQUE EXEMPLE
 
 ### 1. Créer un rôle sans connexion
 
@@ -213,7 +227,7 @@ CREATE USER allen WITH PASSWORD '1234';
 
 ### 3. Attribuer un rôle à un utilisateur (ou à d’autres rôles)
 
-- Pour donner à allen les privilèges associés au rôle moderateur, 
+- Pour donner à allen les privilèges associés au rôle moderateur,
 - **on utilise GRANT**. Cela signifie qu’ **allen héritera des privilèges de moderateur** :
 
 ```
@@ -226,36 +240,41 @@ GRANT moderateur TO allen;
 ### 4. Attribuer des privilèges au rôle moderateur
 
 - Maintenant, attribuons des privilèges spécifiques au rôle moderateur,
-- plutôt qu’à chaque utilisateur individuellement. 
+- plutôt qu’à chaque utilisateur individuellement.
 - Par exemple, **si nous avons une table employes et nous voulons que tous les modérateurs puissent lire les données :**
 
------
+---
 
 - Avec cette commande, tous les utilisateurs ayant le rôle moderateur pourront lire la table employes.
 
 ```
 GRANT SELECT ON TABLE employes TO moderateur;
 ```
+
 ---
+
 ### 5. Vérifier les Rôles et les Privilèges
 
 #### Vérifier les rôles :
+
 - Pour voir les rôles et utilisateurs existants, vous pouvez utiliser cette commande dans pgcli :
 - Cela liste tous les rôles, avec les permissions associées (par exemple, si le rôle a LOGIN).
 
 `\du`
 
-### 6. Voir les privilèges d’un rôle spécifique : 
+### 6. Voir les privilèges d’un rôle spécifique :
 
 - Pour voir les privilèges du rôle moderateur sur les objets de la base de données, utilisez cette commande SQL :
 
 - Cela nous montre les privilèges associés à moderateur sur chaque table.
+
 ```
 SELECT grantee, privilege_type
 FROM information_schema.role_table_grants
 WHERE grantee = 'moderateur';
 ```
- GRANT **SELECT**
+
+GRANT **SELECT**
 
 ```
 helloworld> GRANT SELECT ON TABLE employes TO moderateur;
@@ -277,17 +296,20 @@ helloworld> SELECT grantee, privilege_type
 - Supposons que nous souhaitons retirer le rôle moderateur d'allen :
 
 - ici Allen est moderateur
+
 ```
 \du
 | allen | False | True | False | False | True | -1 | <null> | ['moderateur']
 ```
-- Puis nous allons revoquer le role de moderateur 
+
+- Puis nous allons revoquer le role de moderateur
 
 ```
 REVOKE moderateur FROM allen;
 REVOKE ROLE
 ```
-- Ainsi nous pouvons constater que moderateur à disparu 
+
+- Ainsi nous pouvons constater que moderateur à disparu
 
 ```
 |allen|False|True|False|False|True|-1|<null>|[]
@@ -295,27 +317,21 @@ REVOKE ROLE
 
 - allen ne pourra plus accéder aux privilèges liés au rôle moderateur.
 
-
-
-
 ---
 
 ## Gestion des droits
+
 #### Attribuer des privilèges avec GRANT
-
-
-
-
-
 
 <a href="#sommaire">
   <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
 ![postegrean](/assets/img/line/pink_point_line_l.png)
-![postegrean](/assets/img/line/green_point_line_r.png)
 
 # Data Definition Language DDL
+
+![postegrean](/assets/img/line/green_point_line_r.png)
 
 - Pour commencer, créons une base de données nommée entreprise :
 
@@ -401,7 +417,7 @@ DROP TABLE employes;
 TRUNCATE TABLE employes;
 ```
 
-## Définir les contraintes
+## Contraintes PK FK unique not null default check
 
 Les contraintes définissent des règles que les données doivent respecter.
 
@@ -478,7 +494,7 @@ ADD CONSTRAINT check_salaire CHECK (salaire > 0);
 
 # Manipulation des données avec DML
 
-### Insertion de données
+### INSERT INTO
 
 ```
 INSERT INTO table_test (prenom, nom, email, age, adresse, telephone)
@@ -630,25 +646,11 @@ WHERE table_name = 'mockaroo_test' AND grantee = 'franck';
   <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
-![postegrean](/assets/img/line/pink_point_line_l.png)
-
-# Get started Mokaroo
-
-- Pour installer une base de donnée avec Mockaroo il faut créer notre base de donnée sur le site , choisir SQL en export puis **construire notre BDD**
-
-- Puis dans **pgcli** nous allons ajouter après **\i** la route correspondant à notre fichier
-
-`\i /home/meodel/Téléchargements/mockaroo_test.sql`
-
-![postegrean](/assets/img/line/pink_point_line_l.png)
-
-# Application des Dailys
-
-### Data Query Language DQL
+# Data Query Language DQL
 
 ![postegrean](/assets/img/border/cadre_white_b.png)
 
-## 1.Structure d'une requête SELECT
+## Structure d'une requête SELECT
 
 - Pour ce daily je vais créer une table employes que je vais remplir avec un insert aléatoire
 
@@ -686,7 +688,7 @@ SELECT * FROM employes;
 SELECT prenom, nom FROM employes;
 ```
 
-#### Utiliser des Alias
+#### Alias as PRENOM
 
 - Les alias permettent de renommer les colonnes dans le résultat. Ici, nous renommerons prenom en Prénom et nom en Nom :
 
@@ -700,7 +702,7 @@ SELECT prenom AS Prénom, nom AS Nom FROM employes;
 
 ## 2.Filtrage des Données
 
-#### WHERE ?
+#### WHERE
 
 - La clause WHERE permet de filtrer les résultats selon des critères spécifiques. Par exemple, pour trouver les employés du département "IT" :
 
@@ -734,7 +736,7 @@ SELECT * FROM employes WHERE salaire > 55000;
 +----+--------+--------+-------------+----------+---------------+
 ```
 
-#### Les Opérateurs Logiques
+#### Les Opérateurs Logiques AND OR NOT
 
 - Les opérateurs logiques **(AND, OR, NOT)** permettent de combiner plusieurs conditions :
 
@@ -769,7 +771,7 @@ SELECT * FROM employes WHERE departement = 'Ventes' OR departement = 'RH';
 
 ```
 
-#### WHERE BETWEN ?
+#### WHERE BETWEEN
 
 - BETWEEN permet de filtrer les résultats dans une plage de valeurs:
 
@@ -788,7 +790,7 @@ SELECT * FROM employes WHERE salaire BETWEEN 50000 AND 60000;
 +----+--------+---------+-------------+----------+---------------+
 ```
 
-#### WHERE IN ?
+#### WHERE IN
 
 - IN permet de filtrer selon une liste de valeurs. Par exemple, pour trouver les employés dans les départements IT et RH :
 
@@ -806,7 +808,7 @@ SELECT * FROM employes WHERE departement IN ('IT', 'RH');
 +----+--------+---------+-------------+----------+---------------+
 ```
 
-#### Utiliser LIKE et les caractères génériques (wildcards)
+#### LIKE et les caractères génériques wildcards
 
 - LIKE permet de faire des recherches partielles avec les wildcards **(% pour plusieurs caractères et \_ pour un seul caractère).**
 
@@ -1144,3 +1146,15 @@ CREATE DATABASE entreprise;
 <a href="#sommaire">
   <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
 </a>
+
+![postegrean](/assets/img/line/pink_point_line_l.png)
+
+# Get started Mokaroo
+
+- Pour installer une base de donnée avec Mockaroo il faut créer notre base de donnée sur le site , choisir SQL en export puis **construire notre BDD**
+
+- Puis dans **pgcli** nous allons ajouter après **\i** la route correspondant à notre fichier
+
+`\i /home/meodel/Téléchargements/mockaroo_test.sql`
+
+![postegrean](/assets/img/line/pink_point_line_l.png)

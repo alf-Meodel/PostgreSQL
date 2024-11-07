@@ -15,6 +15,10 @@
 
 ---
 
+# Performances
+
+- Utiliser un select étoile (\*) est moins performant que selectionner les user individuellement car on passe par un outil système avec \_ qui fait la transition
+
 # Tips
 
 - Dans PostgreSQL, nosu ne pouvons pas créer de base de données directement depuis **pgcli**. Il faut sortir de **pgcli** et utiliser **psql** ou le **terminal PostgreSQL** :
