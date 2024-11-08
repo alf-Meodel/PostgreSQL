@@ -1,4 +1,14 @@
-# Problème SQL : Interactions entre Pokémon
+<a href="/README.md">
+  <img src="/assets/img/button/home_page.png" alt="Lire la suite" style="width: 150px; height: auto;">
+</a>
+
+# Sommaire
+
+- [Pokemon Context](#pokemon-context)
+
+# Pokemon Context
+
+## Problème SQL : Interactions entre Pokémon
 
 Nous avons une base de données contenant les 150 premiers Pokémon et leurs interactions. Cette base de données contient des informations sur chaque Pokémon, leur type, et les attaques qu'ils possèdent. Nous voulons savoir quels Pokémon peuvent attaquer efficacement d’autres Pokémon en fonction de leurs types d’attaque et de vulnérabilité.
 
@@ -69,3 +79,7 @@ INNER JOIN Types T1 ON Attaques.type_attaque = T1.nom_type
 INNER JOIN Types T2 ON T1.vulnerable_contre = T2.nom_type
 INNER JOIN Pokemons P2 ON P2.type_principal = T2.nom_type;
 ```
+
+<a href="#sommaire">
+  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+</a>

@@ -13,6 +13,7 @@
 - [Commandes CLI](doc/commandes_cli.md)
 - [Les Contraintes](doc/les-contraintes.md)
 - [Mémo](doc/memo.md)
+- [Requetes SQL Methode](/doc/requetes-sql-methode.md)
 
 ![postegrean](assets/mep/b_green3.png)
 
