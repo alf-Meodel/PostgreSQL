@@ -38,6 +38,7 @@
   - [Utiliser LIMIT et OFFSET](#utiliser-limit-et-offset)
 
 - [Liste des Dailys](#dailys)
+- [Get started Mokaroo](#get-started-mokaroo)
 
 ![postegrean](/assets/img/border/cadre_white_b.png)
 
