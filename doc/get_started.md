@@ -1,4 +1,4 @@
-<h1 style="color: #008080;">GET STARTED </h1>
+# GET STARTED
 
 <!-- ![postegrean](/assets/structure/test_line_b1.png) -->
 

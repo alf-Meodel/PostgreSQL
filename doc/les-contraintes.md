@@ -1,16 +1,14 @@
-<h1 style="color: #008080;">PK FK</h1>
+<a href="../README.md">
+  <img src="../assets/button/home_page.png" alt="Home page" style="width: 150px; height: auto;">
+</a>
+
+# Les Contraintes
 
 ![border](../assets/line/border_r.png)
 
 ## Sommaire
 
----
-
-<a href="/PostgreSQL/README.md">
-  <img src="/assets/img/button/home_page.png" alt="Home page" style="width: 150px; height: auto;">
-</a>
-
----
+- [PRIMARY KEY](#primary-key)
 
 # PRIMARY KEY
 

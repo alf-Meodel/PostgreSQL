@@ -1,4 +1,4 @@
-<h1 style="color: #008080;">POSTEGRESQL MEMO </h1>
+# POSTEGRESQL MEMO
 
 ![border](../assets/line/border_r.png)
 
