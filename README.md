@@ -14,7 +14,7 @@
 
 ## Navigation
 
-- [Setup](doc/setup_linux.md)
+- [Setup Linux](doc/setup_linux.md)
 - [Setup Windows](doc/setup_windows.md)
 - [Bonnes Pratiques](doc/bonnes-pratiques.md)
 - [Get Started ](doc/get_started.md)
