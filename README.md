@@ -8,22 +8,28 @@
 
 ## Sommaire
 
+- [Comparatif & Performances](#comparatif-et-performances)
+- [Avantages de PostgreSQL](#avantages-de-postgresql)
+- [Cas d'usage adaptés](#best-practices)
+
+## Navigation
+
 - [Setup](doc/setup_linux.md)
 - [Get Started ](doc/get_started.md)
 - [Commandes CLI](doc/commandes_cli.md)
 - [Les Contraintes](doc/les-contraintes.md)
 - [Mémo](doc/memo.md)
-- [Requetes SQL Methode](/doc/requetes-sql-methode.md)
+- [Pokemon-context](doc/pokemon-context.md)
 
 ![postegrean](assets/line/border_b.png)
 
 ![border](assets/line/line_pink_point_l.png)
 
-# Comparatif & Performances
+# Comparatif et Performances
 
 ![border](assets/line/line_teal_point_r.png)
 
-<h3 style="color: #ab638c"> Différences majeures entre PostegreSQL et MYSQL </h3>
+## Différences majeures entre PostegreSQL et MYSQL
 
 | Critères                 | MySQL                                      | PostegreSQL                                              |
 | ------------------------ | ------------------------------------------ | -------------------------------------------------------- |
@@ -35,10 +41,15 @@
 
 ---
 
-<details>
-  <summary><strong style="font-size: 1.5em; font-weight: bold">Avantages de PostgreSQL :</strong></summary>
+<a href="#sommaire">
+  <img src="assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
+</a>
 
-<span style="color: #ab638c"></span>
+![border](assets/line/line_pink_point_l.png)
+
+## Avantages de PostgreSQL
+
+![border](assets/line/line_teal_point_r.png)
 
 - Dans la même base de donnée fait du r**elationnel et du non relationnel** ( docs... )
 
@@ -55,16 +66,15 @@
 
 - **Performance** : Excellente pour traiter de grandes quantités de données et des requêtes complexes, bien adapté aux écritures et lectures intensives.
 
-</details>
+<a href="#sommaire">
+  <img src="assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
+</a>
 
-<details>
+![border](assets/line/line_pink_point_l.png)
 
-<summary>
-<strong style="font-size: 1.5em; font-weight: bold">
-Cas d'usage adaptés :
-</strong>
+## Best Practices
 
-</summary>
+![border](assets/line/line_teal_point_r.png)
 
 - **Applications analytiques** : Idéal pour des analyses et rapports détaillés sur de grands volumes de données.
 - **Banques et Finances** : Gère des transactions sûres et précises, parfait pour des opérations bancaires complexes.
@@ -72,8 +82,11 @@ Cas d'usage adaptés :
 - **Systèmes de gestion de données** : Excellente gestion de données variées comme des cartes géographiques ou des documents structurés (JSON).
 
 - **Applications critiques** : Idéal pour des services **où la disponibilité et la sécurité sont essentielles**, comme les **services de santé et de sécurité.**
-</details>
 
 ---
 
 ![border](assets/line/border_r.png)
+
+<a href="#sommaire">
+  <img src="assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
+</a>
