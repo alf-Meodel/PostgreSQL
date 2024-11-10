@@ -39,6 +39,10 @@ Pour nous connecter à **pgCLI**, nous allons utiliser la commande suivante :
 
 `pgcli -U votre_utilisateur -d votre_base`
 
+<a href="#sommaire">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
+</a>
+
 # Pgcli
 
 ## Commandes de connexion et de base de données
@@ -68,6 +72,10 @@ Exemple : \c aubondeal
 ```
 CREATE DATABASE nom_de_la_base;
 ```
+
+<a href="#sommaire">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
+</a>
 
 ## Commandes pour les tables et les schémas
 
@@ -107,6 +115,10 @@ created_at TIMESTAMP DEFAULT NOW()
 DROP TABLE nom_de_la_table;
 ```
 
+<a href="#sommaire">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
+</a>
+
 ## Commandes pour les données
 
 - Insérer des données :
@@ -141,6 +153,10 @@ DELETE FROM nom_de_la_table WHERE condition;
 Exemple :
 DELETE FROM Users WHERE user_id = 1;
 ```
+
+<a href="#sommaire">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
+</a>
 
 ## Commandes pour les utilisateurs et les rôles
 
@@ -177,6 +193,10 @@ REVOKE nom_role FROM nom_utilisateur;
 DROP USER nom_utilisateur;
 ```
 
+<a href="#sommaire">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
+</a>
+
 ## Commandes pour les permissions
 
 - Attribuer des permissions :
@@ -192,6 +212,10 @@ Exemple : GRANT SELECT, UPDATE ON Users TO manager;
 REVOKE type_permission ON objet FROM nom_role;
 Exemple : REVOKE UPDATE ON Users FROM PUBLIC;
 ```
+
+<a href="#sommaire">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
+</a>
 
 ## Commandes de navigation et aide dans pgcli
 
