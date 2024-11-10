@@ -1,7 +1,8 @@
 <a href="../README.md">
   <img src="../assets/button/home_page.png" alt="Home page" style="width: 150px; height: auto;">
 </a>
-<h1 style="color: #008080;">LINUX POSTEGRESQL </h1>
+
+# LINUX POSTEGRESQL
 
 ![border](../assets/line/border_r.png)
 
@@ -26,7 +27,7 @@
 
 ![border](../assets/line/line_teal_point_l.png)
 
-<h2 style="color: #ab638c" id="setup"> SETUP </h2>
+## SETUP
 
 ![border](../assets/line/line_multi_point_r.png)
 

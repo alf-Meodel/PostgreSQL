@@ -1,12 +1,14 @@
-<a href="/README.md">
-  <img src="/assets/img/button/home_page.png" alt="Lire la suite" style="width: 150px; height: auto;">
+<a href="../README.md">
+  <img src="../assets/button/home_page.png" alt="Home page" style="width: 150px; height: auto;">
 </a>
+
+# Pokemon Context
+
+![border](../assets/line/border_r.png)
 
 # Sommaire
 
 - [Pokemon Context](#pokemon-context)
-
-# Pokemon Context
 
 ## Problème SQL : Interactions entre Pokémon
 

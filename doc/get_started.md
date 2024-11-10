@@ -1,3 +1,7 @@
+<a href="../README.md">
+  <img src="../assets/button/home_page.png" alt="Home page" style="width: 150px; height: auto;">
+</a>
+
 # GET STARTED
 
 <!-- ![postegrean](/assets/structure/test_line_b1.png) -->
