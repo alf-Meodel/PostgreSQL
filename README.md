@@ -16,10 +16,10 @@
 
 - [Setup](doc/setup_linux.md)
 - [Setup Windows](doc/setup_windows.md)
+- [Bonnes Pratiques](doc/bonnes-pratiques.md)
 - [Get Started ](doc/get_started.md)
 - [Commandes CLI](doc/commandes_cli.md)
 - [Les Contraintes](doc/les-contraintes.md)
-- [Mémo](doc/memo.md)
 - [Pokemon-context](doc/pokemon-context.md)
 
 ![postegrean](assets/line/border_b.png)

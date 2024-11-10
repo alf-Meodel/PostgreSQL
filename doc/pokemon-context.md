@@ -83,5 +83,5 @@ INNER JOIN Pokemons P2 ON P2.type_principal = T2.nom_type;
 ```
 
 <a href="#sommaire">
-  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
 </a>
