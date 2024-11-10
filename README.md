@@ -4,9 +4,9 @@
 
 ![postegrean](assets/img/postgre_ban.webp)
 
-![postegrean](assets/img/border/cadre_white_b.png)
+![postegrean](assets/line/border_l.png)
 
-<h1 style="color: #008080;">Sommaire </h1>
+## Sommaire
 
 - [Setup](doc/setup_linux.md)
 - [Get Started ](doc/get_started.md)
@@ -15,11 +15,13 @@
 - [Mémo](doc/memo.md)
 - [Requetes SQL Methode](/doc/requetes-sql-methode.md)
 
-![postegrean](assets/mep/b_green3.png)
+![postegrean](assets/line/border_b.png)
 
----
+![border](assets/line/line_pink_point_l.png)
 
-<h1 style="color: #008080;">Comparatif & Performances </h1>
+# Comparatif & Performances
+
+![border](assets/line/line_teal_point_r.png)
 
 <h3 style="color: #ab638c"> Différences majeures entre PostegreSQL et MYSQL </h3>
 
@@ -74,4 +76,4 @@ Cas d'usage adaptés :
 
 ---
 
-![postegrean](assets/mep/b_green2.png)
+![border](assets/line/border_r.png)

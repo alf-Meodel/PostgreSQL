@@ -2,7 +2,7 @@
 
 <!-- ![postegrean](/assets/structure/test_line_b1.png) -->
 
-![postegrean](/assets/structure/teal_line_t0.png)
+![border](../assets/line/border_r.png)
 
 ## Sommaire
 
@@ -40,15 +40,7 @@
 - [Liste des Dailys](#dailys)
 - [Get started Mokaroo](#get-started-mokaroo)
 
-![postegrean](/assets/img/border/cadre_white_b.png)
-
-![postegrean](/assets/img/line/pink_point_line_l.png)
-
-<a href="/README.md">
-  <img src="/assets/img/button/home_page.png" alt="Lire la suite" style="width: 150px; height: auto;">
-</a>
-
-![postegrean](/assets/img/line/pink_point_line_r.png)
+![border](../assets/line/border_b.png)
 
 ### Tools :
 
@@ -76,11 +68,10 @@ _En PostgreSQL, quand on crée une nouvelle base de données, **on ne peut pas s
 - Puis nous reconnecter en spécifiant la database ici test_DB
 
 <a href="#sommaire">
-  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
-![postegrean](/assets/img/line/pink_point_line_l.png)
-![postegrean](/assets/img/line/green_point_line_r.png)
+![border](../assets/line/line_multi_point_r.png)
 
 # Data Control Language DCL
 
@@ -325,14 +316,14 @@ REVOKE ROLE
 #### Attribuer des privilèges avec GRANT
 
 <a href="#sommaire">
-  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
-![postegrean](/assets/img/line/pink_point_line_l.png)
+![border](../assets/line/line_teal_point_l.png)
 
 # Data Definition Language DDL
 
-![postegrean](/assets/img/line/green_point_line_r.png)
+![border](../assets/line/line_multi_point_r.png)
 
 - Pour commencer, créons une base de données nommée entreprise :
 
@@ -487,13 +478,14 @@ ADD CONSTRAINT check_salaire CHECK (salaire > 0);
 ```
 
 <a href="#sommaire">
-  <img src="/assets/img/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
-![postegrean](/assets/img/line/pink_point_line_l.png)
-![postegrean](/assets/img/line/green_point_line_r.png)
+![border](../assets/line/line_teal_point_l.png)
 
 # Manipulation des données avec DML
+
+![border](../assets/line/line_multi_point_r.png)
 
 ### INSERT INTO
 
@@ -644,12 +636,10 @@ WHERE table_name = 'mockaroo_test' AND grantee = 'franck';
 ```
 
 <a href="#sommaire">
-  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
 # Data Query Language DQL
-
-![postegrean](/assets/img/border/cadre_white_b.png)
 
 ## Structure d'une requête SELECT
 
@@ -699,7 +689,9 @@ SELECT prenom, nom FROM employes;
 SELECT prenom AS Prénom, nom AS Nom FROM employes;
 ```
 
-![postegrean](/assets/img/border/cadre_white_b.png)
+<a href="#sommaire">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
+</a>
 
 ## 2.Filtrage des Données
 
@@ -992,7 +984,9 @@ SELECT * FROM employes LIMIT 3 OFFSET 2;
 +----+--------+---------+-------------+----------+---------------+
 ```
 
-![postegrean](/assets/img/border/cadre_white_b.png)
+<a href="#sommaire">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
+</a>
 
 ---
 
@@ -1008,16 +1002,16 @@ CREATE DATABASE entreprise;
 
 ---
 
-# Dailys
+# Dailys
 
 <a href="#sommaire">
-<img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
 ## Mercredi 30/10/2024 :
 
 <a href="#sommaire">
-  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
 ### Introduction à PostgreSQL et DCL :
@@ -1066,7 +1060,7 @@ CREATE DATABASE entreprise;
 ## Jeudi 31/10/2024 :
 
 <a href="#sommaire">
-  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
 ### SQL - DDL et DML
@@ -1112,7 +1106,7 @@ CREATE DATABASE entreprise;
 ## Lundi 04/11/2024 :
 
 <a href="#sommaire">
-  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
 ### SQL - Data Query Language (DQL)
@@ -1145,10 +1139,8 @@ CREATE DATABASE entreprise;
   - [x] Savoir utiliser LIMIT et OFFSET
 
 <a href="#sommaire">
-  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
 </a>
-
-![postegrean](/assets/img/line/pink_point_line_l.png)
 
 # Get started Mokaroo
 
@@ -1158,4 +1150,11 @@ CREATE DATABASE entreprise;
 
 `\i /home/meodel/Téléchargements/mockaroo_test.sql`
 
-![postegrean](/assets/img/line/pink_point_line_l.png)
+<a href="#sommaire">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
+</a>
+<a href="../README.md">
+  <img src="../assets/button/home_page.png" alt="Home page" style="width: 150px; height: auto;">
+</a>
+
+![border](../assets/line/border_r.png)

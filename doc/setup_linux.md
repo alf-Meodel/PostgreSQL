@@ -1,4 +1,9 @@
+<a href="../README.md">
+  <img src="../assets/button/home_page.png" alt="Home page" style="width: 150px; height: auto;">
+</a>
 <h1 style="color: #008080;">LINUX POSTEGRESQL </h1>
+
+![border](../assets/line/border_r.png)
 
 # Sommaire
 
@@ -17,11 +22,13 @@
 
 ---
 
-[↩️ Readme](/README.md)
-
 ---
 
+![border](../assets/line/line_teal_point_l.png)
+
 <h2 style="color: #ab638c" id="setup"> SETUP </h2>
+
+![border](../assets/line/line_multi_point_r.png)
 
 ## Premiers pas
 
@@ -49,7 +56,9 @@ postgresql.service - PostgreSQL RDBMS
 
 ```
 
-[Go to Top ⬆️](#sommaire)
+<a href="#sommaire">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
+</a>
 
 ## Première connexion à PostgreSQL
 
@@ -61,7 +70,9 @@ postgresql.service - PostgreSQL RDBMS
 
 # `psql`
 
-[Go to Top ⬆️](#sommaire)
+<a href="#sommaire">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
+</a>
 
 ## Mot de passe superUtilisateur postgreS
 
@@ -102,9 +113,15 @@ _PS: Si tout se déroule correctement le message **ALTER ROLE** s'affichera_
 - la commande recommandé est **/q** mais elle ne marche pas dans mon cas
 - j'utilise donc **ctrl D**
 
-[Go to Top ⬆️](#sommaire)
+<a href="#sommaire">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
+</a>
+
+![border](../assets/line/line_teal_point_l.png)
 
 <h1 style="color: #ab638c" id="pgadmin4"> Installation de pgAdmin 4 </h1>
+
+![border](../assets/line/line_multi_point_r.png)
 
 ## Introduction
 
@@ -123,9 +140,15 @@ _pgAdmin 4 est une interface graphique complète pour administrer et gérer les 
 - Ce qui nous permettra de lancer la version desktop manuellement à partir de notre bureau
 - **PS : une version web existe**
 
-[Go to Top ⬆️](#sommaire)
+<a href="#sommaire">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
+</a>
+
+![border](../assets/line/line_teal_point_l.png)
 
 <h1 style="color: #ab638c" id="pgcli"> Installation de pgCli </h1>
+
+![border](../assets/line/line_multi_point_r.png)
 
 - Dans un premier temps nous allons mettre à jour nos paquets
 
@@ -184,4 +207,11 @@ CREATE DATABASE
 
 ## Tadaaaa !
 
-[Go to Top ⬆️](#sommaire)
+<a href="#sommaire">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
+</a>
+<a href="../README.md">
+  <img src="../assets/button/home_page.png" alt="Home page" style="width: 150px; height: auto;">
+</a>
+
+![border](../assets/line/border_r.png)

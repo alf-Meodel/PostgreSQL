@@ -1,6 +1,10 @@
-<h1 style="color: #008080;">COMMANDES CLI </h1>
+<a href="../README.md">
+  <img src="../assets/button/home_page.png" alt="Home page" style="width: 150px; height: auto;">
+</a>
 
-![postegrean](/assets/img/border/cadre_white_b.png)
+# COMMANDES CLI
+
+![border](../assets/line/border_l.png)
 
 # Sommaire
 
@@ -12,11 +16,13 @@
 
 ---
 
-<a href="/PostgreSQL/README.md">
-  <img src="/assets/img/button/home_page.png" alt="Home page" style="width: 150px; height: auto;">
+<a href="#sommaire">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
 </a>
 
 ---
+
+![border](../assets/line/border_b.png)
 
 <h2 style="color: #ab638c" id="navigation">Navigation</h2>
 
@@ -51,7 +57,11 @@ Pour nous connecter à **pgCLI**, nous allons utiliser la commande suivante :
 **f3** : activer le multiligne
 
 <a href="#sommaire">
-  <img src="/assets/img/button/back_to_top.png " alt="Back to top" style="width: 150px; height: auto;">
+  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
 </a>
-
+<a href="../README.md">
+  <img src="../assets/button/home_page.png" alt="Home page" style="width: 150px; height: auto;">
+</a>
 ---
+
+![border](../assets/line/border_r.png)
