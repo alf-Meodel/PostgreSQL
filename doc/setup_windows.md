@@ -9,9 +9,9 @@
 # Sommaire
 
 - [PostgreSQL](#setup)
-  - [Premier pas](#premiers-pas)
-  - [Ajouter PostgreSQL au PATH](#ajouter-postgresql-au-path)
-- [Pgcli](#ajouter-postgresql-au-path)
+- [Premier pas](#premiers-pas)
+- [Ajouter PostgreSQL au PATH](#ajouter-postgresql-au-path)
+- [Pgcli](#pgcli)
 
 ---
 
@@ -74,11 +74,19 @@ pip install pgcli
 pgcli --version
 ```
 
+- après ca il ne nous reste plus qu'a créer une database sur postegre pour nous connecter à elle sur pgcli
+
+```
+psql -U postgres
+CREATE DATABASE nom_de_la_base;
+```
+
+![border](../assets/line/line_pink_point_l.png)
 <a href="#sommaire">
-  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
+<img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
 </a>
 <a href="../README.md">
-  <img src="../assets/button/home_page.png" alt="Home page" style="width: 150px; height: auto;">
+<img src="../assets/button/home_page.png" alt="Home page" style="width: 150px; height: auto;">
 </a>
 
 ![border](../assets/line/border_r.png)
