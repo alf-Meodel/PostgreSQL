@@ -12,6 +12,15 @@
   - [Base](#base)
   - [Frequents](#frequents)
 - [Pgcli](#pgcli)
+
+  - [Commandes de connexion et de base de données](#commandes-de-connexion-et-de-base-de-données)
+  - [Commandes pour les tables et les schémas](#commandes-pour-les-tables-et-les-schémas)
+  - [Commandes pour les données](#commandes-pour-les-données)
+
+  - [Commandes pour les utilisateurs et les rôles](#commandes-pour-les-utilisateurs-et-les-rôles)
+  - [Commandes pour les permissions](#commandes-pour-les-permissions)
+  - [Commandes de navigation et aide dans pgcli](#commandes-de-navigation-et-aide-dans-pgcli)
+
 - [Config](#config)
 
 ![border](../assets/line/border_b.png)
@@ -31,12 +40,6 @@ Pour nous connecter à **pgCLI**, nous allons utiliser la commande suivante :
 `pgcli -U votre_utilisateur -d votre_base`
 
 # Pgcli
-
-## Commandes rapides
-
-- **\di nom_table:** Afficher les index d'une table
-- **\du :** lister tous les index associés à une table
-- **\dn :** Voir les schémas dans la base de données actuelle
 
 ## Commandes de connexion et de base de données
 
@@ -89,11 +92,8 @@ colonne1 TYPE_CONSTRAINTS,
 colonne2 TYPE_CONSTRAINTS,
 ...
 );
-```
 
-- Exemple :
-
-```
+Exemple :
 CREATE TABLE Users (
 user_id SERIAL PRIMARY KEY,
 username VARCHAR(50) UNIQUE NOT NULL,
@@ -113,11 +113,8 @@ DROP TABLE nom_de_la_table;
 
 ```
 INSERT INTO nom_de_la_table (colonne1, colonne2, ...) VALUES (valeur1, valeur2, ...);
-```
 
 Exemple :
-
-```
 INSERT INTO Users (username) VALUES ('martial');
 ```
 
@@ -196,7 +193,7 @@ REVOKE type_permission ON objet FROM nom_role;
 Exemple : REVOKE UPDATE ON Users FROM PUBLIC;
 ```
 
-## Commandes de navigation et d'aide dans pgcli
+## Commandes de navigation et aide dans pgcli
 
 - Quitter pgcli :
 
