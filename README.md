@@ -1,8 +1,8 @@
-# `PostgreSQL (Linux)`
+# PostgreSQL (Linux)
 
 <!-- Main IMG -->
 
-![postegrean](assets/img/postgre_ban.webp)
+![postegrean](assets/img/main_img_postegre.png)
 
 ![postegrean](assets/line/border_l.png)
 
