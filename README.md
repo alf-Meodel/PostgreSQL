@@ -20,6 +20,14 @@
 - [Get Started ](doc/get_started.md)
 - [Commandes CLI](doc/commandes_cli.md)
 - [Les Contraintes](doc/les-contraintes.md)
+
+## Documents éphémère
+
+- [Documents - éphémères](./doc/documents-éphémères.md)
+
+## Exercices
+
+- [Pokemon-context](doc/pokemon-context.md)
 - [Pokemon-context](doc/pokemon-context.md)
 
 ![postegrean](assets/line/border_b.png)
