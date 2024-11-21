@@ -18,6 +18,7 @@
 - [Setup Windows](doc/setup_windows.md)
 - [Get Started ](doc/get_started.md)
 - [Les Procédures Stoquées ](doc/procedures-stoquees%20.md)
+- [Les Triggers](doc/triggers.md)
 - [Bonnes Pratiques](doc/bonnes-pratiques.md)
 - [Commandes CLI](doc/commandes_cli.md)
 - [Les Contraintes](doc/les-contraintes.md)
