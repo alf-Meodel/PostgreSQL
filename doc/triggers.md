@@ -6,16 +6,24 @@
 
 ![border](../assets/line/border_r.png)
 
+# Sommaire
+
+- [Définition](#définition)
+- [Objectif](#objectif)
+- [Résumé des étapes](#résumé-des-étapes)
+- [Créer une table principale](#étape-1--créer-une-table-principale)
+- [Créer une table pour les logs](#étape-2--créer-une-table-pour-les-logs)
+- [Créer une fonction associée au trigger](#étape-3--créer-une-fonction-associée-au-trigger)
+- [Créer le Trigger](#etape-4--créer-le-trigger)
+- [Tester le trigger](#étape-5--tester-le-trigger)
+- [Vérifier les logs](#étape-6--vérifier-les-logs)
+
+![border](../assets/line/border_r.png)
+
 ### Triggers :
 
 ```
 Automatisent des actions en réaction à des événements sur une table.
-```
-
-### Fonction de type trigger :
-
-```
-Définit la logique exécutée par le trigger.
 ```
 
 ### NEW/OLD :
@@ -24,16 +32,11 @@ Définit la logique exécutée par le trigger.
 Fournissent les valeurs avant ou après une modification.
 ```
 
-# Sommaire
-
-- [Définition](#définition)
-
-![border](../assets/line/border_r.png)
 ![border](../assets/line/line_pink_point_r.png)
 
 # Définition
 
-- Un trigger est un mécanisme qui permet d'exécuter automatiquement une action (souvent une fonction) lorsqu'un événement spécifique se produit sur une table (par exemple, une insertion, une mise à jour ou une suppression).
+- Un trigger est un mécanisme qui permet d'exécuter automatiquement une action (souvent une fonction) lorsqu'un événement spécifique se produit sur une table **(par exemple, une insertion, une mise à jour ou une suppression)**.
 
 ![border](../assets/line/line_teal_point_r.png)
 
