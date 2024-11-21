@@ -13,6 +13,8 @@
 - [Créer une table avec une clé étrangère](#étape-2--créer-une-table-avec-une-clé-étrangère)
 - [Vérification de la relation](#étape-3--vérification-de-la-relation)
 
+![border](../assets/line/border_r.png)
+
 # PRIMARY KEY
 
 La contrainte PRIMARY KEY permet de définir une colonne ou un ensemble de colonnes comme identifiant unique de chaque ligne dans une table. Cela signifie que les valeurs de cette colonne ne peuvent pas être nulles et doivent être uniques.
@@ -34,6 +36,10 @@ La contrainte PRIMARY KEY permet de définir une colonne ou un ensemble de colon
   - Insère des données en respectant les relations définies.
   - PostgreSQL empêche toute incohérence grâce aux contraintes.
 
+  <a href="#sommaire"><img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;"></a>
+
+![border](../assets/line/line_pink_point_r.png)
+
 # Étape 1 : Créer une table avec une clé primaire
 
 Créer une table users avec une clé primaire :
@@ -50,6 +56,10 @@ CREATE TABLE users (
 
 - SERIAL : Génère automatiquement une valeur incrémentée pour chaque nouvelle ligne.
 - PRIMARY KEY : Désigne la colonne id comme clé primaire, garantissant que chaque valeur est unique et non nulle.
+
+<a href="#sommaire"><img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;"></a>
+
+![border](../assets/line/line_pink_point_r.png)
 
 # Étape 2 : Créer une table avec une clé étrangère
 
@@ -73,6 +83,10 @@ CREATE TABLE orders (
   - Déclare que user_id est une clé étrangère.
   - Garantit que chaque valeur dans user_id doit exister dans la colonne id de la table users.
 - DEFAULT CURRENT_TIMESTAMP : Définit la date de commande par défaut à l'heure actuelle.
+
+<a href="#sommaire"><img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;"></a>
+
+![border](../assets/line/line_pink_point_r.png)
 
 # Étape 3 : Vérification de la relation
 
@@ -102,11 +116,11 @@ SELECT * FROM orders;
 
 ```
 
-<a href="#sommaire">
-  <img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;">
-</a>
+![border](../assets/line/line_pink_point_r.png)
+
+<a href="#sommaire"><img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;"></a>
 <a href="../README.md">
-  <img src="../assets/button/home_page.png" alt="Home page" style="width: 150px; height: auto;">
+<img src="../assets/button/home_page.png" alt="Home page" style="width: 150px; height: auto;">
 </a>
 
 ![border](../assets/line/border_r.png)
