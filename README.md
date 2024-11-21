@@ -6,12 +6,6 @@
 
 ![postegrean](assets/line/border_l.png)
 
-## Sommaire
-
-- [Comparatif & Performances](#comparatif-et-performances)
-- [Avantages de PostgreSQL](#avantages-de-postgresql)
-- [Cas d'usage adaptés](#best-practices)
-
 ## Navigation
 
 - [Setup Linux](doc/setup_linux.md)
@@ -22,6 +16,12 @@
 - [Bonnes Pratiques](doc/bonnes-pratiques.md)
 - [Commandes CLI](doc/commandes_cli.md)
 - [Les Contraintes](doc/les-contraintes.md)
+
+## Sommaire
+
+- [Comparatif & Performances](#comparatif-et-performances)
+- [Avantages de PostgreSQL](#avantages-de-postgresql)
+- [Cas d'usage adaptés](#best-practices)
 
 ## Documents éphémère
 
