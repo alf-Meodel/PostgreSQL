@@ -10,8 +10,13 @@
 
 - [Définition](#définition)
 - [Mise en place](#mise-en-place)
-- [EXERCICE FACILE](#objectif)
-- [EXERCICE DIFFICILE](#exercice-difficile)
+- [EXERCICE NIVEAU 1](#exercice-niveau-1)
+  - [Objectif](#objectif)
+  - [Créer la fonction du trigger](#créer-la-fonction-du-trigger)
+  - [Créer le trigger](#créer-le-trigger)
+  - [Test du trigger](#test-du-trigger)
+  - [Supprimer le trigger](#supprimer-le-trigger)
+- [EXERCICE NIVEAU 2](#exercice-niveau-2)
   - [Creer une table de journalisation](#creer-une-table-de-journalisation)
   - [Créer une fonction déclenchée (trigger function)](#créer-une-fonction-déclenchée-trigger-function)
 
@@ -50,6 +55,8 @@ CREATE TABLE utilisateurs (
 );
 ```
 
+<a href="#sommaire"><img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;"></a>
+
 ![border](../assets/line/line_pink_point_r.png)
 
 # EXERCICE NIVEAU 1
@@ -72,7 +79,7 @@ CREATE TABLE utilisateurs (
 );
 ```
 
-## Créer une fonction de trigger
+## Créer la fonction du trigger
 
 - La fonction va simplement vérifier et modifier la valeur de nom si elle est manquante avant d'insérer la donnée.
 
@@ -151,6 +158,8 @@ postgres@(none):exemple_db> select * FROM utilisateurs;
 DROP TRIGGER IF EXISTS trigger_verifie_nom ON utilisateurs;
 DROP FUNCTION IF EXISTS verifie_nom();
 ```
+
+<a href="#sommaire"><img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;"></a>
 
 ![border](../assets/line/line_pink_point_r.png)
 
@@ -243,7 +252,7 @@ FOR EACH ROW
 EXECUTE FUNCTION gestion_utilisateurs();
 ```
 
-### Tester le trigger
+## Tester le trigger
 
 ## Insertion d'un nouvel utilisateur :
 
