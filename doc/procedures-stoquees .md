@@ -15,6 +15,7 @@ CREATE OR REPLACE PROCEDURE ajouter_user(nom_utilisateur VARCHAR, email_utilisat
 ```
 
 afficher toutes les procédures stockées : \df+
+             faire defiler chaque ligne : ENTER
 ```
 
 ```
@@ -31,6 +32,8 @@ Si vous utilisez une boucle FOR ... IN SELECT, la variable de la boucle doit êt
 - [Afficher users](#afficher-users)
   - [Type Record](#type-record)
   - [Boucle FOR](#boucle-for)
+  - [Variables scalaires (en détaillant les champs )](#variables-scalaires)
+- [Supprimer une procédure](#supprimer-une-procédure)
 
 ## Définition
 
@@ -170,6 +173,40 @@ BEGIN
     END LOOP;
 END;
 $$;
+```
+
+# Supprimer une procédure
+
+- Pour supprimer une procédure nous devons inclure le nom de la procédure ainsi que la liste de ses arguments (types uniquement, pas les noms),
+
+## Exemple
+
+- Supposons que nous avons la procédure suivante :
+
+```
+CREATE OR REPLACE PROCEDURE ajouter_super_utilisateur(
+    nom_utilisateur VARCHAR,
+    mail_utilisateur VARCHAR
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    INSERT INTO utilisateurs (nom, email)
+    VALUES (nom_utilisateur, mail_utilisateur);
+END;
+$$;
+```
+
+- Pour la supprimer nosu allons faire :
+
+```
+DROP PROCEDURE ajouter_super_utilisateur(VARCHAR, VARCHAR);
+```
+
+- Si la procédure n'a pas d'arguments nous pouvons simplement écrire :
+
+```
+DROP PROCEDURE afficher_tous_les_utilisateurs();
 ```
 
 ![border](../assets/line/line_pink_point_l.png)

@@ -9,14 +9,7 @@
 # Sommaire
 
 - [Définition](#définition)
-- [Objectif](#objectif)
-- [Résumé des étapes](#résumé-des-étapes)
-- [Créer une table principale](#étape-1--créer-une-table-principale)
-- [Créer une table pour les logs](#étape-2--créer-une-table-pour-les-logs)
-- [Créer une fonction associée au trigger](#étape-3--créer-une-fonction-associée-au-trigger)
-- [Créer le Trigger](#etape-4--créer-le-trigger)
-- [Tester le trigger](#étape-5--tester-le-trigger)
-- [Vérifier les logs](#étape-6--vérifier-les-logs)
+- [Mise en place](#mise-en-place)
 
 ![border](../assets/line/border_r.png)
 
@@ -52,6 +45,13 @@ CREATE TABLE utilisateurs (
     date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
+
+## Objectif
+
+Créer un trigger qui :
+
+- Vérifie et modifie les données avant qu'elles soient insérées dans la table.
+- Enregistre les modifications dans une table de journalisation après une mise à jour.
 
 ![border](../assets/line/line_pink_point_l.png)
 
