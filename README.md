@@ -17,16 +17,13 @@
 - [Les rôles](doc/les-roles.md)
 - [Commandes CLI](doc/commandes_cli.md)
 - [Les Contraintes](doc/les-contraintes.md)
+- [Politique de rétention des sauvegardes](doc/politique_sauvegardes/regles-de-sauvegardes.md)
 
 ## Sommaire
 
 - [Comparatif & Performances](#comparatif-et-performances)
 - [Avantages de PostgreSQL](#avantages-de-postgresql)
 - [Cas d'usage adaptés](#best-practices)
-
-## Documents éphémère
-
-- [Documents - éphémères](./doc/documents-éphémères.md)
 
 ![postegrean](assets/line/border_b.png)
 
