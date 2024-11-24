@@ -6,13 +6,31 @@
 
 ![border](../assets/line/border_r.png)
 
+```
+Ne pas oublier d'ajouter les types lors d'une procédure stockée
+
+CREATE OR REPLACE PROCEDURE ajouter_user(nom_utilisateur VARCHAR, email_utilisateur VARCHAR)
+```
+
+```
+
+afficher toutes les procédures stockées : \df+
+```
+
+```
+Si vous utilisez une boucle FOR ... IN SELECT, la variable de la boucle doit être de type RECORD ou explicitement déclarée comme une liste de variables correspondant aux colonnes sélectionnées.
+```
+
 # Sommaire
 
 - [Définition](#définition)
-- [EXEMPLE 1](#exemple-1)
+- [Ajouter USER](#ajouter-user)
   - [Mise en place ](#mise-en-place)
   - [Creation de notre procédure stockée](#creation-de-notre-procédure-stockée)
   - [Call Procédure stockée ](#call-procédure-stockée)
+- [Afficher users](#afficher-users)
+  - [Type Record](#type-record)
+  - [Boucle FOR](#boucle-for)
 
 ## Définition
 
@@ -20,7 +38,7 @@
 
 ![border](../assets/line/line_pink_point_l.png)
 
-# EXEMPLE 1
+# AJOUTER USER
 
 ## Mise en place
 
@@ -81,6 +99,78 @@ CALL ajouter_utilisateur('Alice Martin', 'alice.martin@example.com');
 ```
 
 - Ce qui va ajouter un utilisateur en executant la commande insert into présente dans notre procédure stockée
+
+# AFFICHER USERS
+
+- Pour afficher les utilisateurs nous allons créer une procédure stockée presque identique à la précédente à quelques détails pret :
+
+### Type RECORD
+
+- Declaration de la variable de type RECORD
+
+```
+DECLARE
+     utilisateur_list RECORD; -- Déclaration de la variable de type RECORD
+```
+
+### Boucle FOR
+
+FOR random_nom_descriptif IN suivit de la commande de selection permet de créer une variable qui va contenir les données de la table utilisateurs et qui va être utilisé dans la boucle FOR pour tout afficher
+
+```
+FOR utilisateur_list IN SELECT * FROM utilisateurs LOOP
+```
+
+- ensuite il ne faut pas oublier de fermer la boucle
+
+```
+END LOOP
+```
+
+### CODE COMPLET
+
+```
+postgres@(none):exemple_db> CREATE OR REPLACE PROCEDURE afficher_tous_les_utilisateurs()
+ LANGUAGE plpgsql
+ AS $$
+ DECLARE
+     utilisateur_list RECORD; -- Déclaration de la variable de type RECORD
+ BEGIN
+     RAISE NOTICE 'Liste des utilisateurs :';
+     FOR utilisateur_list IN SELECT * FROM utilisateurs LOOP
+         RAISE NOTICE 'Nom: %, Email: %', utilisateur_list.nom, utilisateur_list.email;
+     END LOOP;
+ END;
+ $$;
+
+CREATE PROCEDURE
+```
+
+## CALL POUR afficher tout
+
+```
+CALL afficher_tous_les_utilisateurs();
+```
+
+# VARIABLES SCALAIRES
+
+- Mais une alternative plus légère existe , elle consiste à utiliser des variables scalaires pour afficher les données de la table
+
+```
+CREATE OR REPLACE PROCEDURE afficher_tous_les_utilisateurs()
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    utilisateur_nom VARCHAR;
+    utilisateur_email VARCHAR;
+BEGIN
+    RAISE NOTICE 'Liste des utilisateurs :';
+    FOR utilisateur_nom, utilisateur_email IN SELECT nom, email FROM utilisateurs LOOP
+        RAISE NOTICE 'Nom: %, Email: %', utilisateur_nom, utilisateur_email;
+    END LOOP;
+END;
+$$;
+```
 
 ![border](../assets/line/line_pink_point_l.png)
 
