@@ -20,8 +20,6 @@
   - [ Se connecter avec le nouvel utilisateur ](#se-connecter-avec-le-nouvel-utilisateur)
   - [ Révocation des droits supplémentaires de postgres ](#révocation-des-droits-supplémentaires-de-postgres)
 
-- [ Tips ](#tips)
-
 ![border](../assets/line/border_b.png)
 
 ![border](../assets/line/line_pink_point_l.png)
@@ -122,12 +120,6 @@ Assurez-vous de ne pas utiliser postgres pour des tâches quotidiennes, en le r�
 ![border](../assets/line/line_teal_point_r.png)
 
 - Utiliser un select étoile (\*) est moins performant que selectionner les user individuellement car on passe par un outil système avec \_ qui fait la transition
-
-# Tips
-
-- Dans PostgreSQL, nosu ne pouvons pas créer de base de données directement depuis **pgcli**. Il faut sortir de **pgcli** et utiliser **psql** ou le **terminal PostgreSQL** :
-
-- En SQL, les chaînes de texte doivent être entourées de guillemets simples ('). Les guillemets doubles (") sont réservés aux noms de colonnes ou de tables.
 
 ![border](../assets/line/line_pink_point_l.png)
 
