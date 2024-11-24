@@ -103,6 +103,8 @@ CALL ajouter_utilisateur('Alice Martin', 'alice.martin@example.com');
 
 - Ce qui va ajouter un utilisateur en executant la commande insert into présente dans notre procédure stockée
 
+<a href="#sommaire"><img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;"></a>
+
 # AFFICHER USERS
 
 - Pour afficher les utilisateurs nous allons créer une procédure stockée presque identique à la précédente à quelques détails pret :
@@ -155,6 +157,8 @@ CREATE PROCEDURE
 CALL afficher_tous_les_utilisateurs();
 ```
 
+<a href="#sommaire"><img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;"></a>
+
 # VARIABLES SCALAIRES
 
 - Mais une alternative plus légère existe , elle consiste à utiliser des variables scalaires pour afficher les données de la table
@@ -174,6 +178,8 @@ BEGIN
 END;
 $$;
 ```
+
+<a href="#sommaire"><img src="../assets/button/back_to_top.png" alt="Back to top" style="width: 150px; height: auto;"></a>
 
 # Supprimer une procédure
 
