@@ -19,6 +19,7 @@
 - [Les Contraintes](doc/les-contraintes.md)
 - [Politique de rétention des sauvegardes](doc/politique_sauvegardes/regles-de-sauvegardes.md)
 - [Association/Tips comprehension](doc/comprehension-sql.md)
+- [uuid_generate_v4() vs gen_random_uuid()](doc/benchmarks.md)
 
 ## Sommaire
 
